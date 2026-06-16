@@ -1,0 +1,107 @@
+{
+ "keyword": "stake wbtc",
+ "h1": "Stake WBTC",
+ "brand": "WBTC",
+ "niche": "stake",
+ "verb": "Stake",
+ "title": "Stake WBTC - Open App",
+ "meta_description": "stake wbtc safely starts with the official WBTC site: verify the token, then review any third-party yield app before connecting.",
+ "palette": {
+  "mode": "dark",
+  "bg": "#0B1020",
+  "accent": "#F7931A",
+  "ink": "#FFFFFF"
+ },
+ "hero_h2": "Put wrapped bitcoin to work after verifying the asset",
+ "hero_lead": "stake wbtc starts with confirming the official WBTC token context, then choosing a reputable DeFi venue where wrapped bitcoin exposure can be supplied, vaulted, or used in yield strategies.",
+ "badge": "Ethereum",
+ "widget": {
+  "from": "WBTC",
+  "from_net": "Ethereum",
+  "to": "Yield position",
+  "to_net": "Ethereum",
+  "action": "Open WBTC App"
+ },
+ "trust": [
+  "ERC-20 token",
+  "Wrapped bitcoin asset",
+  "No native staking"
+ ],
+ "what_is": "WBTC is a wrapped bitcoin asset on Ethereum; its canonical ERC-20 contract can be checked on <a href='https://etherscan.io/token/0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599'>Etherscan</a>. It is not a native staking network, so rewards come only from separate DeFi protocols that choose to support WBTC.",
+ "how": [
+  {
+   "t": "Open the official domain",
+   "d": "Start from WBTC's official site to confirm the asset, token context, and issuer destination before using any yield app."
+  },
+  {
+   "t": "Verify the contract",
+   "d": "Compare the Ethereum token address in your wallet or DeFi app with 0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599."
+  },
+  {
+   "t": "Choose a venue",
+   "d": "Use only a DeFi protocol you trust that supports WBTC supply, vault, lending, or liquidity markets."
+  },
+  {
+   "t": "Review before signing",
+   "d": "Check live rates, withdrawal rules, liquidation exposure, custody assumptions, and smart-contract risk before approving WBTC."
+  }
+ ],
+ "points": [
+  {
+   "h": "Native staking check",
+   "p": "WBTC is not a proof-of-stake chain, so there is no official validator staking flow for the token itself."
+  },
+  {
+   "h": "Contract-first routing",
+   "p": "Verify the asset on the official site and the <a href='https://etherscan.io/token/0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599'>Ethereum explorer</a> before connecting a wallet."
+  },
+  {
+   "h": "Third-party yield clarity",
+   "p": "Any return depends on the independent protocol you use, including its market design, contracts, liquidity, and risk controls."
+  }
+ ],
+ "eeat": [
+  {
+   "text": "WBTC official site",
+   "url": "https://wbtc.network/"
+  },
+  {
+   "text": "WBTC token on Etherscan",
+   "url": "https://etherscan.io/token/0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599"
+  },
+  {
+   "text": "ERC-20 standard on ethereum.org",
+   "url": "https://ethereum.org/en/developers/docs/standards/tokens/erc-20/"
+  }
+ ],
+ "faq": [
+  {
+   "q": "Can I stake wbtc natively?",
+   "a": "No. WBTC is an ERC-20 representation of bitcoin on Ethereum, so it does not have native validator staking; yield options are offered by independent DeFi protocols.",
+   "open": true
+  },
+  {
+   "q": "What should I verify before I stake wbtc?",
+   "a": "Confirm the official WBTC domain, the Ethereum token contract, the app URL you are using, and every wallet approval before signing.",
+   "open": false
+  },
+  {
+   "q": "Is stake wbtc the same as lending WBTC?",
+   "a": "Often the search intent points to earning yield, but the actual mechanism may be lending, vault deposits, or liquidity provision rather than native staking.",
+   "open": false
+  },
+  {
+   "q": "Where does stake wbtc yield come from?",
+   "a": "Yield, if available, comes from the third-party protocol's market activity and incentives, not from WBTC itself.",
+   "open": false
+  },
+  {
+   "q": "Which network is used to stake wbtc?",
+   "a": "Canonical WBTC is an Ethereum ERC-20 token, though third-party apps may support wrapped or bridged versions on other networks; verify the chain and contract each time.",
+   "open": false
+  }
+ ],
+ "official_url": "https://wbtc.network/",
+ "official_domain": "wbtc.network",
+ "footer_note": "Not the official WBTC app; verify the wbtc.network domain and use this page for education only, not financial advice."
+}
