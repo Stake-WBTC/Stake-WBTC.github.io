@@ -1,22 +1,22 @@
 {
- "name": "WBTC",
- "short_name": "WBTC",
- "start_url": "/",
- "display": "standalone",
- "background_color": "#FFFFFF",
- "theme_color": "#FFFFFF",
- "icons": [
-  {
-   "src": "static/icon-192.png",
-   "sizes": "192x192",
-   "type": "image/png",
-   "purpose": "any maskable"
-  },
-  {
-   "src": "static/icon-512.png",
-   "sizes": "512x512",
-   "type": "image/png",
-   "purpose": "any maskable"
-  }
- ]
+  "name": "Stake Crypto",
+  "short_name": "Stake Crypto",
+  "description": "Stake Crypto locks supported assets to earn staking rewards from your own wallet.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#F7F4EE",
+  "theme_color": "#16B36A",
+  "icons": [
+    {
+      "src": "favicon.png",
+      "sizes": "any",
+      "type": "image/png"
+    },
+    {
+      "src": "stakecrypto.png",
+      "sizes": "any",
+      "type": "image/png"
+    }
+  ]
 }
