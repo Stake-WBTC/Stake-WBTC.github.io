@@ -3,721 +3,185 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Stake WBTC - Decentralized DeFi Portal</title>
-  <meta name="description" content="Secure, non-custodial portal for Stake WBTC DeFi operations directly from your own wallet.">
+  <title>Stake WBTC - Put Bitcoin to Work</title>
+  <meta name="description" content="Stake WBTC from your wallet and turn wrapped Bitcoin into an active DeFi position. Compare live terms, costs, and safety before you sign.">
+  <meta name="theme-color" content="#FBFAF7">
   <link rel="canonical" href="https://stake-wbtc.github.io/">
   <meta name="robots" content="index,follow">
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="favicon.png">
   <link rel="manifest" href="site.webmanifest">
   <link rel="prefetch" href="dashboard/">
-  <link rel="prerender" href="dashboard/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Stake WBTC - Put Bitcoin to Work">
+  <meta property="og:description" content="Stake WBTC from your wallet and turn wrapped Bitcoin into an active DeFi position with live terms shown before you sign.">
+  <meta property="og:image" content="og-cover.png">
+  <meta property="og:url" content="https://stake-wbtc.github.io/">
   <style>
-
-
-:root{
-  --bg:#fbfaf7;
-  --bg-warm:#f6f1e9;
-  --surface:#ffffff;
-  --surface-soft:#fffaf3;
-  --ink:#171411;
-  --muted:#6f6961;
-  --soft:#9a9288;
-  --line:rgba(23,20,17,.1);
-  --line-strong:rgba(23,20,17,.16);
-  --accent:#f7931a;
-  --accent-deep:#d97800;
-  --accent-soft:rgba(247,147,26,.12);
-  --shadow:0 30px 80px -48px rgba(31,24,17,.38), 0 16px 42px -34px rgba(31,24,17,.24);
-  --accent-shadow:0 11px 20px -13px rgba(247,147,26,.78), inset 0 1px 0 rgba(255,255,255,.42), inset 0 0 0 1px rgba(255,255,255,.18);
-}
-
-*{box-sizing:border-box}
-html,
-body{
-  min-height:100%;
-  margin:0;
-  overflow-x:hidden;
-}
-
-html{
-  background:var(--bg);
-  scroll-behavior:smooth;
-}
-
-body{
-  color:var(--ink);
-  font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  line-height:1.5;
-  background:
-    linear-gradient(180deg, rgba(255,255,255,.8) 0%, rgba(255,255,255,0) 28%),
-    radial-gradient(circle at 72% 8%, rgba(247,147,26,.13), transparent 31%),
-    linear-gradient(180deg, var(--bg) 0%, #ffffff 48%, var(--bg-warm) 100%);
-  -webkit-font-smoothing:antialiased;
-  text-rendering:optimizeLegibility;
-}
-
-a{color:inherit;text-decoration:none}
-img{display:block;max-width:100%}
-h1,p{margin:0}
-
-.topbar{
-  position:absolute;
-  z-index:10;
-  top:0;
-  left:0;
-  width:100%;
-  display:flex;
-  align-items:center;
-  gap:20px;
-  padding:22px clamp(18px,4.8vw,64px);
-}
-
-.brand{
-  display:inline-flex;
-  align-items:center;
-  gap:11px;
-  min-width:max-content;
-  color:var(--ink);
-  font-size:.98rem;
-  font-weight:720;
-  letter-spacing:0;
-}
-
-.brand img{
-  width:30px;
-  height:30px;
-  border-radius:10px;
-  box-shadow:0 0 0 1px rgba(23,20,17,.08), 0 10px 22px -17px rgba(23,20,17,.45);
-}
-
-.topbar-spacer{flex:1 1 auto}
-
-.nav{
-  display:flex;
-  align-items:center;
-  flex-wrap:wrap;
-  gap:8px;
-  padding:4px;
-  border:1px solid rgba(23,20,17,.08);
-  border-radius:999px;
-  background:rgba(255,255,255,.66);
-  box-shadow:0 18px 42px -36px rgba(31,24,17,.34);
-  backdrop-filter:blur(16px);
-}
-
-.nav a{
-  min-height:34px;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding:7px 13px;
-  border-radius:999px;
-  color:var(--muted);
-  font-size:.89rem;
-  font-weight:610;
-  letter-spacing:0;
-  white-space:nowrap;
-  transition:background .18s ease, color .18s ease, transform .18s ease;
-}
-
-.nav a:hover{
-  color:var(--ink);
-  background:#fff;
-  transform:translateY(-1px);
-}
-
-main{position:relative}
-
-.hero{
-  min-height:100svh;
-  width:min(1180px,100%);
-  margin:0 auto;
-  display:grid;
-  grid-template-columns:minmax(0,1.02fr) minmax(360px,.8fr);
-  align-items:center;
-  gap:clamp(34px,6vw,82px);
-  padding:116px clamp(18px,4.8vw,34px) 72px;
-}
-
-.hero-copy{
-  max-width:700px;
-}
-
-.eyebrow,
-.section-label,
-.panel-kicker{
-  color:var(--accent-deep);
-  font-size:.74rem;
-  font-weight:760;
-  letter-spacing:.12em;
-  line-height:1.1;
-  text-transform:uppercase;
-}
-
-h1{
-  margin-top:18px;
-  color:var(--ink);
-  font-size:clamp(4rem,5.6vw,5.1rem);
-  font-weight:820;
-  line-height:.95;
-  letter-spacing:0;
-}
-
-.deck{
-  max-width:58ch;
-  margin-top:22px;
-  color:var(--muted);
-  font-size:clamp(1.07rem,1.45vw,1.24rem);
-  line-height:1.65;
-}
-
-.deck strong{
-  color:var(--ink);
-  font-weight:760;
-  box-shadow:inset 0 -.45em 0 var(--accent-soft);
-}
-
-.chips{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-  margin-top:28px;
-}
-
-.chips span{
-  min-height:38px;
-  display:inline-flex;
-  align-items:center;
-  padding:8px 14px;
-  border:1px solid rgba(23,20,17,.09);
-  border-radius:999px;
-  background:rgba(255,255,255,.72);
-  color:#4d4740;
-  font-size:.92rem;
-  font-weight:640;
-  box-shadow:0 14px 28px -25px rgba(31,24,17,.34);
-}
-
-.cta{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:8px;
-  border:1px solid rgba(143,77,0,.32);
-  border-radius:13px;
-  background:linear-gradient(180deg, #ffad41 0%, var(--accent) 46%, #ed870d 100%);
-  color:#fff;
-  font-weight:640;
-  letter-spacing:-.01em;
-  line-height:1;
-  box-shadow:var(--accent-shadow);
-  transition:transform .18s ease, box-shadow .18s ease, filter .18s ease;
-}
-
-.cta span{
-  display:inline-block;
-  font-size:1.35em;
-  line-height:.7;
-  transform:translateY(-1px);
-  transition:transform .18s ease;
-}
-
-.cta:hover{
-  transform:translateY(-1px);
-  filter:saturate(1.04) brightness(1.01);
-  box-shadow:0 13px 22px -13px rgba(247,147,26,.86), inset 0 1px 0 rgba(255,255,255,.5), inset 0 0 0 1px rgba(255,255,255,.2);
-}
-
-.cta:hover span{transform:translate(3px,-1px)}
-.cta-hero{
-  min-height:50px;
-  margin-top:34px;
-  padding:0 22px;
-  font-size:1rem;
-}
-
-.stake-console{
-  width:min(100%,470px);
-  justify-self:end;
-  border:1px solid rgba(23,20,17,.1);
-  border-radius:22px;
-  background:linear-gradient(180deg, rgba(255,255,255,.96) 0%, rgba(255,250,243,.94) 100%);
-  box-shadow:var(--shadow);
-  overflow:hidden;
-}
-
-.console-chrome{
-  min-height:58px;
-  display:flex;
-  align-items:center;
-  gap:10px;
-  padding:14px 16px;
-  border-bottom:1px solid rgba(23,20,17,.08);
-  background:rgba(255,255,255,.72);
-}
-
-.window-dots{
-  display:flex;
-  align-items:center;
-  gap:6px;
-  margin-right:auto;
-}
-
-.window-dots span{
-  width:8px;
-  height:8px;
-  border-radius:50%;
-  background:rgba(23,20,17,.18);
-}
-
-.selector-pill,
-.preview-pill{
-  min-height:30px;
-  display:inline-flex;
-  align-items:center;
-  gap:7px;
-  padding:6px 10px;
-  border-radius:999px;
-  border:1px solid rgba(23,20,17,.08);
-  background:#fff;
-  color:var(--muted);
-  font-size:.78rem;
-  font-weight:680;
-}
-
-.preview-pill{
-  color:#8f4d00;
-  background:rgba(247,147,26,.1);
-  border-color:rgba(247,147,26,.18);
-}
-
-.preview-pill span{
-  width:7px;
-  height:7px;
-  border-radius:50%;
-  background:var(--accent);
-  box-shadow:0 0 0 0 rgba(247,147,26,.32);
-  animation:pulse 2.1s ease-out infinite;
-}
-
-.console-body{
-  display:grid;
-  gap:14px;
-  padding:18px;
-}
-
-.asset-panel{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:18px;
-  min-height:112px;
-  padding:18px;
-  border:1px solid rgba(23,20,17,.08);
-  border-radius:18px;
-  background:linear-gradient(180deg,#fff 0%,#fffaf3 100%);
-  box-shadow:0 20px 44px -38px rgba(31,24,17,.32);
-}
-
-.asset-panel p{
-  max-width:170px;
-  color:var(--muted);
-  font-size:.93rem;
-  line-height:1.45;
-  text-align:right;
-}
-
-.wbtc-chip{
-  display:inline-flex;
-  align-items:center;
-  gap:9px;
-  margin-top:10px;
-  min-height:42px;
-  padding:9px 13px;
-  border:1px solid rgba(247,147,26,.24);
-  border-radius:999px;
-  background:#fff;
-  color:#23180d;
-  font-size:1rem;
-  font-weight:780;
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.8), 0 14px 26px -23px rgba(247,147,26,.64);
-}
-
-.wbtc-chip span{
-  width:11px;
-  height:11px;
-  border-radius:50%;
-  background:var(--accent);
-  box-shadow:0 0 0 4px rgba(247,147,26,.13);
-}
-
-.flow{
-  height:28px;
-  position:relative;
-}
-
-.flow:before{
-  content:"";
-  position:absolute;
-  left:50%;
-  top:0;
-  width:1px;
-  height:100%;
-  background:linear-gradient(180deg, rgba(247,147,26,.1), rgba(247,147,26,.48), rgba(247,147,26,.1));
-}
-
-.flow span{
-  position:absolute;
-  left:calc(50% - 6px);
-  top:8px;
-  width:13px;
-  height:13px;
-  border-right:2px solid var(--accent);
-  border-bottom:2px solid var(--accent);
-  transform:rotate(45deg);
-}
-
-.earning-panel strong{
-  display:block;
-  margin-top:10px;
-  color:var(--ink);
-  font-size:1.18rem;
-  line-height:1.15;
-}
-
-.console-note{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  color:var(--soft);
-  font-size:.84rem;
-  font-weight:610;
-}
-
-.console-note span{
-  display:inline-flex;
-  min-height:30px;
-  align-items:center;
-  padding:6px 10px;
-  border-radius:999px;
-  background:rgba(23,20,17,.04);
-}
-
-.cta-card{
-  min-height:48px;
-  width:100%;
-  padding:0 18px;
-  font-size:.98rem;
-}
-
-.section-shell{
-  width:min(1120px,100%);
-  margin:0 auto;
-  padding:0 clamp(18px,4.8vw,34px);
-}
-
-.chart-section{
-  padding:42px 0 26px;
-}
-
-.section-intro{
-  display:flex;
-  align-items:end;
-  justify-content:space-between;
-  gap:18px;
-  margin-bottom:16px;
-}
-
-.section-intro p:last-child{
-  max-width:370px;
-  color:var(--muted);
-  font-size:.96rem;
-  text-align:right;
-}
-
-.chart-card{
-  height:clamp(360px,42vw,440px);
-  padding:10px;
-  border:1px solid rgba(23,20,17,.1);
-  border-radius:22px;
-  background:#fff;
-  box-shadow:var(--shadow);
-  overflow:hidden;
-}
-
-.tradingview-widget-container,
-.tradingview-widget-container__widget{
-  width:100%;
-  height:100%;
-  border-radius:15px;
-  overflow:hidden;
-}
-
-.sources-section{
-  padding:24px 0 70px;
-}
-
-.sources-shell{
-  display:grid;
-  gap:15px;
-}
-
-.sources-grid{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-}
-
-.sources-grid a{
-  min-height:44px;
-  display:inline-flex;
-  align-items:center;
-  gap:9px;
-  max-width:100%;
-  padding:9px 13px 9px 10px;
-  border:1px solid rgba(23,20,17,.09);
-  border-radius:14px;
-  background:rgba(255,255,255,.68);
-  color:#5d564e;
-  font-size:.91rem;
-  font-weight:630;
-  box-shadow:0 16px 34px -31px rgba(31,24,17,.35);
-  filter:saturate(.65);
-  transition:transform .18s ease, filter .18s ease, background .18s ease, border-color .18s ease, color .18s ease;
-}
-
-.sources-grid a:hover{
-  transform:translateY(-2px);
-  filter:saturate(1);
-  background:#fff;
-  color:var(--ink);
-  border-color:rgba(247,147,26,.22);
-}
-
-.sources-grid img{
-  width:22px;
-  height:22px;
-  border-radius:6px;
-  flex:0 0 auto;
-}
-
-.footer{
-  display:grid;
-  gap:8px;
-  padding:28px clamp(18px,4.8vw,64px) 34px;
-  border-top:1px solid rgba(23,20,17,.08);
-  color:var(--soft);
-  font-size:.88rem;
-  text-align:center;
-}
-
-.footer p:first-child{
-  color:#4d4740;
-  font-weight:680;
-}
-
-@keyframes pulse{
-  0%{box-shadow:0 0 0 0 rgba(247,147,26,.34)}
-  70%{box-shadow:0 0 0 9px rgba(247,147,26,0)}
-  100%{box-shadow:0 0 0 0 rgba(247,147,26,0)}
-}
-
-@media(max-width:880px){
-  .topbar{
-    position:relative;
-    padding:16px 18px 2px;
-    flex-wrap:wrap;
+  :root{
+    --bg:#FBFAF7; --panel:#FFFFFF; --field:#F7F4EE;
+    --ink:#1A1512; --muted:#6E665E; --faint:#9C958B;
+    --line:rgba(26,21,18,.09); --line-2:rgba(26,21,18,.05);
+    --accent:#F7931A; --accent-ink:#B66C13; --accent-soft:rgba(247,147,26,.1);
+    --pos:#15A34A;
+    --radius:22px; --radius-sm:14px;
+    --shadow-card:0 1px 0 rgba(26,21,18,.03), 0 34px 64px -30px rgba(26,21,18,.22), 0 10px 24px -18px rgba(26,21,18,.16);
+    --shadow-soft:0 1px 0 rgba(26,21,18,.02), 0 20px 44px -32px rgba(26,21,18,.22);
+    --ui:"Space Grotesk",-apple-system,system-ui,sans-serif;
+    --body:"Inter",-apple-system,system-ui,sans-serif;
   }
+  *{box-sizing:border-box}
+  html,body{margin:0; overflow-x:hidden}
+  body{background:var(--bg); color:var(--ink); font-family:var(--body); line-height:1.55; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; position:relative}
+  a{color:inherit; text-decoration:none}
+  a.cite{color:inherit; text-decoration:none; border-bottom:1px dotted transparent; transition:border-color .15s ease}
+  a.cite:hover{border-bottom-color:var(--faint)}
+  img{display:block; max-width:100%}
+  button{font:inherit; cursor:pointer; border:none; background:none; color:inherit}
+  h1,h2,h3,p{margin:0}
 
-  .topbar-spacer{display:none}
+  /* ---------- texture (dot matrix + warm glow) ---------- */
+  .bg{position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden}
+  .bg .glow{position:absolute; inset:0; background:
+      radial-gradient(700px 480px at 78% -6%, rgba(247,147,26,.12), transparent 62%),
+      radial-gradient(680px 520px at 6% 18%, rgba(247,147,26,.07), transparent 60%);}
+  .bg .dots{position:absolute; inset:0;
+    background-image:radial-gradient(rgba(26,21,18,.06) 1px, transparent 1.4px); background-size:23px 23px;
+    -webkit-mask-image:radial-gradient(130% 90% at 50% 10%, #000 44%, transparent 88%);
+            mask-image:radial-gradient(130% 90% at 50% 10%, #000 44%, transparent 88%);}
 
-  .nav{
-    order:3;
-    width:100%;
-    justify-content:space-between;
+  /* ---------- top bar ---------- */
+  .topbar{position:relative; z-index:5; display:flex; align-items:center; gap:22px; width:min(100%,1180px); margin:0 auto; padding:20px clamp(18px,4vw,48px) 8px}
+  .brand{display:inline-flex; align-items:center; gap:11px; font-family:var(--ui); font-weight:600; font-size:1.05rem; letter-spacing:-.01em}
+  .brand img{width:30px; height:30px; border-radius:8px; box-shadow:0 0 0 1px rgba(255,255,255,.8), 0 8px 18px -12px rgba(247,147,26,.5)}
+  .spacer{flex:1}
+  .nav{display:flex; align-items:center; gap:clamp(16px,2.6vw,30px)}
+  .nav a{font-family:var(--ui); font-weight:500; font-size:.92rem; color:var(--muted); transition:color .16s ease}
+  .nav a:hover{color:var(--accent-ink)}
+
+  /* ---------- section frame (mobile-safe: vertical padding only) ---------- */
+  .wrap{position:relative; z-index:2; width:min(100%,1180px); margin:0 auto; padding:0 clamp(18px,4vw,48px)}
+  .sec{padding-top:clamp(50px,7vh,90px); padding-bottom:clamp(50px,7vh,90px)}
+  .sec-head{max-width:60ch; margin:0 0 clamp(26px,4vh,40px)}
+  .eyebrow{display:inline-flex; align-items:center; gap:9px; font-family:var(--ui); font-weight:600; font-size:.78rem; letter-spacing:.14em; text-transform:uppercase; color:var(--accent-ink)}
+  .eyebrow .dot{width:7px; height:7px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 4px var(--accent-soft)}
+  .eyebrow svg{width:15px; height:15px}
+  .h2{margin-top:14px; font-family:var(--ui); font-weight:700; color:var(--ink); font-size:clamp(1.9rem,3.4vw,2.7rem); line-height:1.04; letter-spacing:-.02em}
+  .sec-head p{margin-top:14px; color:var(--muted); font-size:clamp(1rem,1.3vw,1.12rem); line-height:1.6}
+
+  /* ---------- hero ---------- */
+  .hero{display:grid; grid-template-columns:minmax(0,1.05fr) minmax(360px,.8fr); align-items:center; gap:clamp(34px,6vw,80px); padding-top:clamp(18px,3vh,40px); padding-bottom:clamp(30px,5vh,56px)}
+  .copy{min-width:0}
+  .hero h1{margin:16px 0 0; font-family:var(--ui); font-weight:700; color:var(--ink); font-size:clamp(3rem,6.4vw,5.2rem); line-height:.98; letter-spacing:-.03em}
+  .deck{max-width:46ch; margin:20px 0 0; color:var(--muted); font-size:clamp(1.04rem,1.35vw,1.18rem); line-height:1.6}
+  .deck strong{color:var(--ink); font-weight:600; box-shadow:inset 0 -.36em 0 var(--accent-soft)}
+  .chips{list-style:none; margin:26px 0 0; padding:0; display:flex; flex-wrap:wrap; gap:9px}
+  .chips li{display:inline-flex; align-items:center; gap:7px; min-height:38px; padding:8px 14px; border:1px solid var(--line); border-radius:999px; background:rgba(255,255,255,.7); font-family:var(--ui); font-weight:500; font-size:.88rem; color:var(--ink)}
+  .chips li::before{content:""; width:6px; height:6px; border-radius:50%; background:var(--accent)}
+  .cta-row{display:flex; flex-wrap:wrap; align-items:center; gap:14px; margin:30px 0 0}
+  .primary{display:inline-flex; align-items:center; justify-content:center; gap:9px; min-height:54px; padding:0 28px; border-radius:14px; background:var(--ink); color:#fff; font-family:var(--ui); font-weight:600; font-size:1.02rem; letter-spacing:-.01em; box-shadow:0 16px 30px -16px rgba(26,21,18,.7); transition:transform .18s ease, box-shadow .18s ease, filter .18s ease}
+  .primary:hover{transform:translateY(-1px); filter:brightness(1.08); box-shadow:0 22px 38px -16px rgba(26,21,18,.8)}
+  .primary svg{width:17px; height:17px}
+  .ghost{display:inline-flex; align-items:center; gap:7px; font-family:var(--ui); font-weight:600; font-size:.98rem; color:var(--muted); transition:color .16s ease}
+  .ghost:hover{color:var(--accent-ink)}
+  .ghost svg{width:15px; height:15px}
+
+  /* ---------- stake card ---------- */
+  .card{width:min(100%,400px); margin:0 0 0 auto; padding:14px; background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow-card); position:relative}
+  .card::before{content:""; position:absolute; inset:0 0 auto; height:1px; border-radius:var(--radius) var(--radius) 0 0; background:linear-gradient(90deg, transparent, rgba(247,147,26,.4), transparent)}
+  .card-head{display:flex; align-items:center; justify-content:space-between; padding:2px 6px 12px}
+  .card-head .ct{font-family:var(--ui); font-weight:600; font-size:1.04rem; letter-spacing:-.01em}
+  .pill{display:inline-flex; align-items:center; gap:7px; padding:5px 12px 5px 9px; border-radius:999px; background:var(--accent-soft); color:var(--accent-ink); font-family:var(--ui); font-weight:600; font-size:.76rem}
+  .pill .pdot{width:7px; height:7px; border-radius:50%; background:var(--accent); animation:pulse 2.4s ease-out infinite}
+  .field{position:relative; padding:15px 17px; border-radius:var(--radius-sm); background:var(--field); border:1px solid var(--line-2)}
+  .field + .field{margin-top:6px}
+  .flabel{display:block; color:var(--muted); font-size:.82rem; font-weight:500; margin-bottom:12px}
+  .frow{display:flex; align-items:center; justify-content:space-between; gap:12px}
+  .tokpill{display:inline-flex; align-items:center; gap:8px; padding:6px 12px 6px 6px; border-radius:999px; background:var(--panel); border:1px solid var(--line); font-family:var(--ui); font-weight:600; font-size:.98rem; box-shadow:0 1px 0 rgba(26,21,18,.02)}
+  .tokpill img{width:24px; height:24px; border-radius:50%}
+  .ghostval{color:var(--faint); font-size:.9rem; font-weight:450; white-space:nowrap}
+  .conv{position:relative; height:0}
+  .conv span{position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:38px; height:38px; border-radius:50%; z-index:3; background:var(--panel); border:4px solid var(--panel); box-shadow:0 0 0 1px var(--line), 0 8px 18px -10px rgba(26,21,18,.28); display:grid; place-items:center; color:var(--accent-ink)}
+  .conv svg{width:17px; height:17px}
+  .yield{display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:8px; padding:12px 15px; border-radius:12px; background:var(--accent-soft)}
+  .yield .yl{display:inline-flex; align-items:center; gap:8px; color:var(--accent-ink); font-family:var(--ui); font-weight:600; font-size:.88rem}
+  .yield .yl svg{width:16px; height:16px}
+  .yield .yr{color:var(--accent-ink); font-weight:600; font-size:.82rem; white-space:nowrap}
+  .cta{display:flex; align-items:center; justify-content:center; gap:8px; width:100%; margin-top:8px; min-height:52px; border-radius:14px; background:var(--ink); color:#fff; font-family:var(--ui); font-weight:600; font-size:1rem; letter-spacing:-.01em; box-shadow:0 14px 28px -16px rgba(26,21,18,.65); transition:transform .18s ease, filter .18s ease}
+  .cta:hover{transform:translateY(-1px); filter:brightness(1.08)}
+  .note{margin:11px 0 2px; text-align:center; color:var(--faint); font-size:.78rem}
+
+  /* ---------- how it works ---------- */
+  .steps{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+  .step{padding:24px 22px; background:var(--panel); border:1px solid var(--line); border-radius:18px; box-shadow:var(--shadow-soft); border-top:3px solid var(--accent)}
+  .step .num{font-family:var(--ui); font-weight:700; font-size:.92rem; color:var(--accent-ink)}
+  .step h3{margin:12px 0 8px; font-family:var(--ui); font-weight:600; font-size:1.12rem; color:var(--ink); letter-spacing:-.01em}
+  .step p{color:var(--muted); font-size:.94rem; line-height:1.55}
+
+  /* ---------- why / rewards ---------- */
+  .grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+  .ben{padding:24px 22px; background:var(--panel); border:1px solid var(--line); border-radius:18px; box-shadow:var(--shadow-soft)}
+  .ben .ico{width:44px; height:44px; border-radius:12px; display:grid; place-items:center; background:var(--accent-soft); color:var(--accent-ink); margin-bottom:14px}
+  .ben .ico svg{width:21px; height:21px}
+  .ben h3{font-family:var(--ui); font-weight:600; font-size:1.12rem; color:var(--ink); letter-spacing:-.01em}
+  .ben p{margin-top:8px; color:var(--muted); font-size:.94rem; line-height:1.55}
+
+  /* ---------- networks strip ---------- */
+  .netband{display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:18px; padding:22px 24px; background:var(--panel); border:1px solid var(--line); border-radius:18px; box-shadow:var(--shadow-soft)}
+  .netband .nt{font-family:var(--ui); font-weight:600; color:var(--ink); font-size:1.02rem; max-width:34ch}
+  .nets{display:flex; flex-wrap:wrap; gap:9px}
+  .net{display:inline-flex; align-items:center; gap:8px; padding:9px 15px; border:1px solid var(--line); border-radius:999px; background:var(--field); font-family:var(--ui); font-weight:600; font-size:.88rem; color:var(--ink)}
+  .net .nd{width:8px; height:8px; border-radius:50%; background:var(--accent)}
+  .netband .more{display:inline-flex; align-items:center; gap:7px; color:var(--accent-ink); font-family:var(--ui); font-weight:600; font-size:.92rem; white-space:nowrap}
+  .netband .more svg{width:15px; height:15px}
+
+  /* ---------- FAQ (2-col grid of cards) ---------- */
+  .faq{display:grid; grid-template-columns:repeat(2,1fr); gap:14px}
+  .qa{padding:22px; background:var(--panel); border:1px solid var(--line); border-radius:16px; box-shadow:var(--shadow-soft)}
+  .qa .qn{font-family:var(--ui); font-weight:700; font-size:.8rem; color:var(--accent-ink); letter-spacing:.04em}
+  .qa h3{margin:8px 0 8px; font-family:var(--ui); font-weight:600; font-size:1.08rem; color:var(--ink); letter-spacing:-.01em}
+  .qa p{color:var(--muted); font-size:.95rem; line-height:1.6}
+  .qa a:not(.cite){color:var(--accent-ink); font-weight:600; box-shadow:inset 0 -.34em 0 var(--accent-soft)}
+
+  /* ---------- related ---------- */
+  .related{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+  .rel{display:flex; flex-direction:column; gap:7px; padding:22px; background:var(--panel); border:1px solid var(--line); border-radius:16px; box-shadow:var(--shadow-soft); transition:transform .16s ease, border-color .16s ease}
+  .rel:hover{transform:translateY(-2px); border-color:rgba(247,147,26,.35)}
+  .rel .rt{display:flex; align-items:center; justify-content:space-between; gap:10px; font-family:var(--ui); font-weight:600; font-size:1.05rem; color:var(--ink); letter-spacing:-.01em}
+  .rel .rt svg{width:16px; height:16px; color:var(--accent-ink); flex:none}
+  .rel p{color:var(--muted); font-size:.9rem; line-height:1.5}
+
+  /* ---------- footer ---------- */
+  .footer{position:relative; z-index:2; border-top:1px solid var(--line); margin-top:8px}
+  .footer .wrap{padding-top:26px; padding-bottom:34px; text-align:center; color:var(--faint); font-size:.84rem}
+  .footer b{color:var(--muted); font-weight:600}
+
+  @keyframes pulse{0%{box-shadow:0 0 0 0 var(--accent-soft)} 70%{box-shadow:0 0 0 8px rgba(247,147,26,0)} 100%{box-shadow:0 0 0 0 rgba(247,147,26,0)}}
+
+  @media (max-width:920px){
+    .nav{display:none}
+    .hero{grid-template-columns:1fr; gap:30px}
+    .card{margin:0 auto}
+    .hero h1{font-size:clamp(2.8rem,12vw,3.8rem)}
+    .deck{max-width:none}
+    .steps,.grid3,.faq,.related{grid-template-columns:1fr}
+    .netband{flex-direction:column; align-items:flex-start}
   }
-
-  .nav a{
-    flex:1 1 0;
-    min-width:0;
-    min-height:38px;
-    padding-inline:8px;
-    font-size:.86rem;
+  @media (max-width:430px){
+    .chips{gap:7px}
+    .primary,.ghost{width:100%; justify-content:center}
   }
-
-  .hero{
-    min-height:auto;
-    grid-template-columns:1fr;
-    gap:32px;
-    padding:60px 18px 48px;
-  }
-
-  .hero-copy{
-    max-width:none;
-  }
-
-  h1{
-    font-size:clamp(4rem,15vw,4.8rem);
-  }
-
-  .deck{
-    max-width:44rem;
-    font-size:1.04rem;
-    line-height:1.58;
-  }
-
-  .stake-console{
-    width:100%;
-    justify-self:stretch;
-  }
-
-  .section-intro{
-    align-items:start;
-    flex-direction:column;
-    gap:8px;
-  }
-
-  .section-intro p:last-child{
-    text-align:left;
-  }
-}
-
-@media(max-width:620px){
-  .brand{font-size:.94rem}
-
-  .hero{
-    padding-top:42px;
-  }
-
-  .eyebrow,
-  .section-label,
-  .panel-kicker{
-    font-size:.7rem;
-  }
-
-  h1{
-    margin-top:14px;
-    font-size:clamp(4rem,17vw,4.45rem);
-  }
-
-  .chips{
-    gap:8px;
-    margin-top:22px;
-  }
-
-  .chips span{
-    min-height:36px;
-    padding:7px 11px;
-    font-size:.86rem;
-  }
-
-  .cta-hero{
-    width:100%;
-    margin-top:28px;
-  }
-
-  .console-chrome{
-    gap:7px;
-    padding:12px;
-  }
-
-  .window-dots span{
-    width:7px;
-    height:7px;
-  }
-
-  .selector-pill,
-  .preview-pill{
-    min-height:28px;
-    padding-inline:8px;
-    font-size:.72rem;
-  }
-
-  .console-body{
-    padding:14px;
-  }
-
-  .asset-panel{
-    min-height:auto;
-    align-items:flex-start;
-    flex-direction:column;
-    gap:12px;
-    padding:15px;
-    border-radius:16px;
-  }
-
-  .asset-panel p{
-    max-width:none;
-    text-align:left;
-  }
-
-  .chart-section{
-    padding-top:24px;
-  }
-
-  .chart-card{
-    height:300px;
-    padding:7px;
-    border-radius:18px;
-  }
-
-  .tradingview-widget-container,
-  .tradingview-widget-container__widget{
-    border-radius:12px;
-  }
-
-  .sources-section{
-    padding-bottom:46px;
-  }
-
-  .sources-grid{
-    display:grid;
-    grid-template-columns:1fr;
-  }
-
-  .sources-grid a{
-    width:100%;
-    min-height:46px;
-  }
-
-  .footer{
-    padding:24px 18px 30px;
-  }
-}
-
-@media(max-width:390px){
-  .topbar{padding-inline:14px}
-  .hero{padding-inline:14px}
-  .section-shell{padding-inline:14px}
-  h1{font-size:clamp(4rem,16.5vw,4.15rem)}
-  .deck{font-size:1rem}
-}
-
-@media(prefers-reduced-motion:reduce){
-  *,
-  *:before,
-  *:after{
-    animation-duration:.001ms !important;
-    animation-iteration-count:1 !important;
-    scroll-behavior:auto !important;
-    transition-duration:.001ms !important;
-  }
-}
-
-
-  
-.footer {
-  text-align: center !important;
-}
+  @media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important; transition-duration:.01ms!important}}
   </style>
 </head>
 <body>
+  <div class="bg" aria-hidden="true"><div class="glow"></div><div class="dots"></div></div>
+
   <header class="topbar">
-    <div class="brand">
+    <a class="brand" href="./">
       <img src="favicon.png" width="30" height="30" alt="">
       <span>Stake WBTC</span>
-    </div>
+    </a>
     <span class="spacer"></span>
     <nav class="nav" aria-label="Main Navigation">
       <a href="how-it-works/">How it works</a>
@@ -727,11 +191,217 @@ h1{
       <a href="supported-chains/">Supported Chains</a>
     </nav>
   </header>
-  <main class="stage" style="padding: 100px 24px; text-align: center; max-width: 800px; margin: 0 auto;">
-    <h1 style="font-size: clamp(2.5rem, 6vw, 4.5rem); margin-bottom: 24px; font-weight: 800;">Stake WBTC</h1>
-    <p class="value" style="font-size: 1.25rem; opacity: 0.8; margin-bottom: 40px; line-height: 1.6;">Secure, non-custodial gateway for decentralized operations. Connect your Web3 wallet to enter the portal.</p>
-    <a class="open-app" href="dashboard/" style="display: inline-flex; justify-content: center; align-items: center; min-height: 52px; padding: 0 32px; border-radius: 9999px; background: var(--accent, #625bf3); color: #fff; font-weight: 700; text-decoration: none; font-size: 1.1rem; box-shadow: 0 10px 30px rgba(0,0,0,0.15); transition: transform 0.2s ease;">Open App Dashboard</a>
+
+  <main>
+    <!-- HERO -->
+    <section class="wrap hero">
+      <div class="copy">
+        <span class="eyebrow"><span class="dot"></span>Bitcoin DeFi Staking</span>
+        <h1>Stake WBTC</h1>
+        <p class="deck">Stake WBTC from your wallet and turn <a class="cite" href="https://wbtc.network/" rel="nofollow noopener noreferrer">wrapped Bitcoin</a> into an active DeFi position. Keep BTC exposure on EVM rails while the app shows <strong>live yield terms, costs, and contract actions</strong> before you sign.</p>
+        <ul class="chips">
+          <li>Non-custodial</li>
+          <li>WBTC staking</li>
+          <li>Live terms in app</li>
+          <li>Wallet approval flow</li>
+        </ul>
+        <div class="cta-row">
+          <a class="primary" href="dashboard/">
+            Open App
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="ghost" href="how-it-works/">
+            How it works
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <section class="card" aria-label="Stake preview">
+        <div class="card-head">
+          <span class="ct">Stake</span>
+          <span class="pill"><span class="pdot"></span>Preview</span>
+        </div>
+        <div class="field">
+          <span class="flabel">Stake</span>
+          <div class="frow">
+            <span class="tokpill"><img src="eth.png" alt="WBTC">WBTC</span>
+            <span class="ghostval">Amount in app</span>
+          </div>
+        </div>
+        <div class="conv">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg></span>
+        </div>
+        <div class="field">
+          <span class="flabel">Position</span>
+          <div class="frow">
+            <span class="tokpill"><img src="eth.png" alt="WBTC">Staked WBTC</span>
+            <span class="ghostval">Balance in app</span>
+          </div>
+        </div>
+        <div class="yield">
+          <span class="yl">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8M21 7v5M21 7h-5"/></svg>
+            Est. APR
+          </span>
+          <span class="yr">Live in app</span>
+        </div>
+        <a class="cta" href="dashboard/">Open App</a>
+        <p class="note">Preview only &middot; non-custodial &middot; final terms in the app</p>
+      </section>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="wrap sec" id="how">
+      <div class="sec-head">
+        <span class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg>How it works</span>
+        <h2 class="h2">Stake WBTC in three real wallet steps</h2>
+        <p>WBTC staking is a DeFi deposit flow, not native Bitcoin mining or validator staking. You keep control of the wallet, review each contract action, and decide whether the live terms fit.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <span class="num">Step 01</span>
+          <h3>Connect your wallet</h3>
+          <p>Open the app with a <a class="cite" href="https://metamask.io/" rel="nofollow noopener noreferrer">Web3 wallet</a> that holds WBTC on a supported EVM network. The app reads balances without taking custody.</p>
+        </div>
+        <div class="step">
+          <span class="num">Step 02</span>
+          <h3>Choose WBTC and review terms</h3>
+          <p>Select the WBTC staking route, compare the live reward source, withdrawal path, contract allowance, and expected network cost before any transaction is prepared.</p>
+        </div>
+        <div class="step">
+          <span class="num">Step 03</span>
+          <h3>Approve, then stake</h3>
+          <p>Sign the token approval only if needed, then confirm the staking transaction from your wallet. Your position and reward details update inside the dashboard.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY / REWARDS -->
+    <section class="wrap sec" id="why">
+      <div class="sec-head">
+        <span class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8M21 7v5M21 7h-5"/></svg>Why Stake WBTC</span>
+        <h2 class="h2">Make wrapped Bitcoin productive without giving up wallet control</h2>
+      </div>
+      <div class="grid3">
+        <div class="ben">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M7 8l5-5 5 5M7 16l5 5 5-5"/></svg></span>
+          <h3>Bitcoin exposure, DeFi access</h3>
+          <p>WBTC brings <a class="cite" href="https://bitcoin.org/en/" rel="nofollow noopener noreferrer">Bitcoin</a>-linked liquidity into smart contracts, so you can pursue DeFi yield while staying in a familiar BTC-denominated asset.</p>
+        </div>
+        <div class="ben">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 5v5l3 3"/></svg></span>
+          <h3>Live yield context</h3>
+          <p>The dashboard keeps quoted APR, reward token, lock or unlock rules, and withdrawal mechanics in the live app instead of freezing stale numbers on the marketing page.</p>
+        </div>
+        <div class="ben">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-6.2-8.5M21 4v5h-5"/></svg></span>
+          <h3>Self-custody first</h3>
+          <p>You sign each approval and stake action yourself. No account signup is required, and the wallet remains the source of truth for your assets and permissions.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- NETWORKS -->
+    <section class="wrap sec" id="networks">
+      <div class="netband">
+        <p class="nt">Stake WBTC where the app supports <a class="cite" href="https://ethereum.org/en/developers/docs/standards/tokens/erc-20/" rel="nofollow noopener noreferrer">ERC-20 tokens</a> and WBTC liquidity.</p>
+        <div class="nets">
+          <span class="net"><span class="nd"></span>Ethereum</span>
+          <span class="net"><span class="nd"></span>Arbitrum</span>
+          <span class="net"><span class="nd"></span>Optimism</span>
+          <span class="net"><span class="nd"></span>Base</span>
+          <span class="net"><span class="nd"></span>Polygon</span>
+        </div>
+        <a class="more" href="supported-chains/">See supported chains
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="wrap sec" id="faq">
+      <div class="sec-head">
+        <span class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.8.4-1 .8-1 1.7M12 17h.01"/></svg>FAQ</span>
+        <h2 class="h2">Stake WBTC questions</h2>
+      </div>
+      <div class="faq">
+        <div class="qa">
+          <span class="qn">01</span>
+          <h3>What does it mean to Stake WBTC?</h3>
+          <p>Stake WBTC means depositing wrapped Bitcoin into a non-custodial DeFi staking, vault, or reward contract from your own wallet. It is different from native Bitcoin staking.</p>
+        </div>
+        <div class="qa">
+          <span class="qn">02</span>
+          <h3>What asset do I need?</h3>
+          <p>You need WBTC on a supported EVM chain. If you hold native BTC, it must be wrapped or bridged into WBTC before it can interact with smart contracts.</p>
+        </div>
+        <div class="qa">
+          <span class="qn">03</span>
+          <h3>How long does staking take?</h3>
+          <p>The app shows the live flow before signing. Most WBTC staking requires a token approval and a stake transaction, with timing driven by the selected network and wallet confirmation.</p>
+        </div>
+        <div class="qa">
+          <span class="qn">04</span>
+          <h3>What does it cost?</h3>
+          <p>You pay blockchain <a class="cite" href="https://etherscan.io/gastracker" rel="nofollow noopener noreferrer">network fees</a> for approval, staking, and withdrawal actions. Any protocol-specific terms are shown in the app before you confirm.</p>
+        </div>
+        <div class="qa">
+          <span class="qn">05</span>
+          <h3>Is Stake WBTC safe?</h3>
+          <p>Self-custody reduces counterparty exposure, but smart contracts, token approvals, liquidity, bridging, and market movement still create risk. Review every route and permission before signing.</p>
+        </div>
+        <div class="qa">
+          <span class="qn">06</span>
+          <h3>Which chains are supported?</h3>
+          <p>WBTC staking is available only on networks enabled in the app. See the full list on the <a href="supported-chains/">supported chains</a> page before moving funds.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- RELATED -->
+    <section class="wrap sec" id="explore">
+      <div class="sec-head">
+        <span class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7 0l2-2a5 5 0 0 0-7-7l-1 1M14 11a5 5 0 0 0-7 0l-2 2a5 5 0 0 0 7 7l1-1"/></svg>Learn more</span>
+        <h2 class="h2">Explore Stake WBTC</h2>
+      </div>
+      <div class="related">
+        <a class="rel" href="how-it-works/">
+          <span class="rt">How it works <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+          <p>Follow the full WBTC staking flow from wallet connection through approval, staking, and withdrawal.</p>
+        </a>
+        <a class="rel" href="security/">
+          <span class="rt">Security <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+          <p>Review smart contract, token approval, bridge, and self-custody considerations before staking WBTC.</p>
+        </a>
+        <a class="rel" href="supported-chains/">
+          <span class="rt">Supported chains <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+          <p>Check where WBTC staking is available and which EVM networks are enabled in the app.</p>
+        </a>
+      </div>
+    </section>
   </main>
-  <footer class="footer">Stake WBTC &mdash; 2026</footer>
+
+  <footer class="footer">
+    <div class="wrap">
+      <p>Information on this page is for educational purposes only and is not financial advice.</p>
+    </div>
+  </footer>
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[
+    {"@type":"WebSite","@id":"https://stake-wbtc.github.io/#website","url":"https://stake-wbtc.github.io/","name":"Stake WBTC"},
+    {"@type":"Organization","@id":"https://stake-wbtc.github.io/#org","name":"Stake WBTC","url":"https://stake-wbtc.github.io/","logo":"https://stake-wbtc.github.io/favicon.png"},
+    {"@type":"WebApplication","name":"Stake WBTC","applicationCategory":"FinanceApplication","operatingSystem":"Web","url":"https://stake-wbtc.github.io/","browserRequirements":"Requires a Web3 wallet","description":"Non-custodial DeFi app for staking WBTC from your own wallet with live route terms shown before you sign."},
+    {"@type":"FAQPage","mainEntity":[
+      {"@type":"Question","name":"What does it mean to Stake WBTC?","acceptedAnswer":{"@type":"Answer","text":"Stake WBTC means depositing wrapped Bitcoin into a non-custodial DeFi staking, vault, or reward contract from your own wallet. It is different from native Bitcoin staking."}},
+      {"@type":"Question","name":"What asset do I need?","acceptedAnswer":{"@type":"Answer","text":"You need WBTC on a supported EVM chain. If you hold native BTC, it must be wrapped or bridged into WBTC before it can interact with smart contracts."}},
+      {"@type":"Question","name":"How long does staking take?","acceptedAnswer":{"@type":"Answer","text":"The app shows the live flow before signing. Most WBTC staking requires a token approval and a stake transaction, with timing driven by the selected network and wallet confirmation."}},
+      {"@type":"Question","name":"What does it cost?","acceptedAnswer":{"@type":"Answer","text":"You pay blockchain network fees for approval, staking, and withdrawal actions. Any protocol-specific terms are shown in the app before you confirm."}},
+      {"@type":"Question","name":"Is Stake WBTC safe?","acceptedAnswer":{"@type":"Answer","text":"Self-custody reduces counterparty exposure, but smart contracts, token approvals, liquidity, bridging, and market movement still create risk. Review every route and permission before signing."}},
+      {"@type":"Question","name":"Which chains are supported?","acceptedAnswer":{"@type":"Answer","text":"WBTC staking is available only on networks enabled in the app. See the full list on the supported chains page before moving funds."}}
+    ]}
+  ]}
+  </script>
 </body>
 </html>
