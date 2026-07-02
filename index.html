@@ -3,187 +3,399 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Stake WBTC &mdash; Bitcoin Yield</title>
-  <meta name="description" content="Stake WBTC locks your wrapped bitcoin to earn staking rewards from your own wallet.">
+  <title>Stake WBTC - Put Bitcoin to Work</title>
+  <meta name="description" content="Stake WBTC from your wallet and turn wrapped Bitcoin into an active DeFi position. Compare live terms, costs, and safety before you sign.">
+  <meta name="theme-color" content="#FBFAF7">
   <link rel="canonical" href="https://stake-wbtc.github.io/">
-  <meta name="robots" content="index,follow,max-image-preview:large">
-  <meta name="theme-color" content="#fbfaf7">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Stake WBTC &mdash; Bitcoin Yield">
-  <meta property="og:description" content="Stake WBTC locks your wrapped bitcoin to earn staking rewards from your own wallet.">
-  <meta property="og:url" content="https://stake-wbtc.github.io/">
-  <meta property="og:image" content="https://stake-wbtc.github.io/og-cover.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Stake WBTC &mdash; Bitcoin Yield">
-  <meta name="twitter:description" content="Stake WBTC locks your wrapped bitcoin to earn staking rewards from your own wallet.">
-  <meta name="twitter:image" content="https://stake-wbtc.github.io/og-cover.png">
+  <meta name="robots" content="index,follow">
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="favicon.png">
   <link rel="manifest" href="site.webmanifest">
-  <link rel="sitemap" type="application/xml" href="sitemap.xml">
-  <link rel="stylesheet" href="style.css">
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebSite",
-        "@id": "https://stake-wbtc.github.io/#website",
-        "url": "https://stake-wbtc.github.io/",
-        "name": "Stake WBTC",
-        "inLanguage": "en",
-        "publisher": {
-          "@id": "https://stake-wbtc.github.io/#organization"
-        }
-      },
-      {
-        "@type": "WebApplication",
-        "@id": "https://stake-wbtc.github.io/#app",
-        "name": "Stake WBTC",
-        "applicationCategory": "FinanceApplication",
-        "operatingSystem": "Web",
-        "url": "https://stake-wbtc.github.io/",
-        "description": "Stake WBTC locks your wrapped bitcoin to earn staking rewards from your own wallet.",
-        "publisher": {
-          "@id": "https://stake-wbtc.github.io/#organization"
-        }
-      },
-      {
-        "@type": "Organization",
-        "@id": "https://stake-wbtc.github.io/#organization",
-        "name": "Stake WBTC",
-        "url": "https://stake-wbtc.github.io/",
-        "logo": "https://stake-wbtc.github.io/favicon.png"
-      }
-    ]
-  }
-  </script>
-
   <link rel="prefetch" href="dashboard/">
-  <link rel="prerender" href="dashboard/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Stake WBTC - Put Bitcoin to Work">
+  <meta property="og:description" content="Stake WBTC from your wallet and turn wrapped Bitcoin into an active DeFi position with live terms shown before you sign.">
+  <meta property="og:image" content="og-cover.png">
+  <meta property="og:url" content="https://stake-wbtc.github.io/">
+  <style>
+  :root{
+    --bg:#FBFAF7; --panel:#FFFFFF; --field:#F7F4EE;
+    --ink:#1A1512; --muted:#6E665E; --faint:#9C958B;
+    --line:rgba(26,21,18,.09); --line-2:rgba(26,21,18,.05);
+    --accent:#F7931A; --accent-ink:#B66C13; --accent-soft:rgba(247,147,26,.1);
+    --pos:#15A34A;
+    --radius:22px; --radius-sm:14px;
+    --shadow-card:0 1px 0 rgba(26,21,18,.03), 0 34px 64px -30px rgba(26,21,18,.22), 0 10px 24px -18px rgba(26,21,18,.16);
+    --shadow-soft:0 1px 0 rgba(26,21,18,.02), 0 20px 44px -32px rgba(26,21,18,.22);
+    --ui:"Space Grotesk",-apple-system,system-ui,sans-serif;
+    --body:"Inter",-apple-system,system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0; overflow-x:hidden}
+  body{background:var(--bg); color:var(--ink); font-family:var(--body); line-height:1.55; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; position:relative}
+  a{color:inherit; text-decoration:none}
+  a.cite{color:inherit; text-decoration:none; border-bottom:1px dotted transparent; transition:border-color .15s ease}
+  a.cite:hover{border-bottom-color:var(--faint)}
+  img{display:block; max-width:100%}
+  button{font:inherit; cursor:pointer; border:none; background:none; color:inherit}
+  h1,h2,h3,p{margin:0}
+
+  /* ---------- texture (dot matrix + warm glow) ---------- */
+  .bg{position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden}
+  .bg .glow{position:absolute; inset:0; background:
+      radial-gradient(700px 480px at 78% -6%, rgba(247,147,26,.12), transparent 62%),
+      radial-gradient(680px 520px at 6% 18%, rgba(247,147,26,.07), transparent 60%);}
+  .bg .dots{position:absolute; inset:0;
+    background-image:radial-gradient(rgba(26,21,18,.06) 1px, transparent 1.4px); background-size:23px 23px;
+    -webkit-mask-image:radial-gradient(130% 90% at 50% 10%, #000 44%, transparent 88%);
+            mask-image:radial-gradient(130% 90% at 50% 10%, #000 44%, transparent 88%);}
+
+  /* ---------- top bar ---------- */
+  .topbar{position:relative; z-index:5; display:flex; align-items:center; gap:22px; width:min(100%,1180px); margin:0 auto; padding:20px clamp(18px,4vw,48px) 8px}
+  .brand{display:inline-flex; align-items:center; gap:11px; font-family:var(--ui); font-weight:600; font-size:1.05rem; letter-spacing:-.01em}
+  .brand img{width:30px; height:30px; border-radius:8px; box-shadow:0 0 0 1px rgba(255,255,255,.8), 0 8px 18px -12px rgba(247,147,26,.5)}
+  .spacer{flex:1}
+  .nav{display:flex; align-items:center; gap:clamp(16px,2.6vw,30px)}
+  .nav a{font-family:var(--ui); font-weight:500; font-size:.92rem; color:var(--muted); transition:color .16s ease}
+  .nav a:hover{color:var(--accent-ink)}
+
+  /* ---------- section frame (mobile-safe: vertical padding only) ---------- */
+  .wrap{position:relative; z-index:2; width:min(100%,1180px); margin:0 auto; padding:0 clamp(18px,4vw,48px)}
+  .sec{padding-top:clamp(50px,7vh,90px); padding-bottom:clamp(50px,7vh,90px)}
+  .sec-head{max-width:60ch; margin:0 0 clamp(26px,4vh,40px)}
+  .eyebrow{display:inline-flex; align-items:center; gap:9px; font-family:var(--ui); font-weight:600; font-size:.78rem; letter-spacing:.14em; text-transform:uppercase; color:var(--accent-ink)}
+  .eyebrow .dot{width:7px; height:7px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 4px var(--accent-soft)}
+  .eyebrow svg{width:15px; height:15px}
+  .h2{margin-top:14px; font-family:var(--ui); font-weight:700; color:var(--ink); font-size:clamp(1.9rem,3.4vw,2.7rem); line-height:1.04; letter-spacing:-.02em}
+  .sec-head p{margin-top:14px; color:var(--muted); font-size:clamp(1rem,1.3vw,1.12rem); line-height:1.6}
+
+  /* ---------- hero ---------- */
+  .hero{display:grid; grid-template-columns:minmax(0,1.05fr) minmax(360px,.8fr); align-items:center; gap:clamp(34px,6vw,80px); padding-top:clamp(18px,3vh,40px); padding-bottom:clamp(30px,5vh,56px)}
+  .copy{min-width:0}
+  .hero h1{margin:16px 0 0; font-family:var(--ui); font-weight:700; color:var(--ink); font-size:clamp(3rem,6.4vw,5.2rem); line-height:.98; letter-spacing:-.03em}
+  .deck{max-width:46ch; margin:20px 0 0; color:var(--muted); font-size:clamp(1.04rem,1.35vw,1.18rem); line-height:1.6}
+  .deck strong{color:var(--ink); font-weight:600; box-shadow:inset 0 -.36em 0 var(--accent-soft)}
+  .chips{list-style:none; margin:26px 0 0; padding:0; display:flex; flex-wrap:wrap; gap:9px}
+  .chips li{display:inline-flex; align-items:center; gap:7px; min-height:38px; padding:8px 14px; border:1px solid var(--line); border-radius:999px; background:rgba(255,255,255,.7); font-family:var(--ui); font-weight:500; font-size:.88rem; color:var(--ink)}
+  .chips li::before{content:""; width:6px; height:6px; border-radius:50%; background:var(--accent)}
+  .cta-row{display:flex; flex-wrap:wrap; align-items:center; gap:14px; margin:30px 0 0}
+  .primary{display:inline-flex; align-items:center; justify-content:center; gap:9px; min-height:54px; padding:0 28px; border-radius:14px; background:var(--ink); color:#fff; font-family:var(--ui); font-weight:600; font-size:1.02rem; letter-spacing:-.01em; box-shadow:0 16px 30px -16px rgba(26,21,18,.7); transition:transform .18s ease, box-shadow .18s ease, filter .18s ease}
+  .primary:hover{transform:translateY(-1px); filter:brightness(1.08); box-shadow:0 22px 38px -16px rgba(26,21,18,.8)}
+  .primary svg{width:17px; height:17px}
+  .ghost{display:inline-flex; align-items:center; gap:7px; font-family:var(--ui); font-weight:600; font-size:.98rem; color:var(--muted); transition:color .16s ease}
+  .ghost:hover{color:var(--accent-ink)}
+  .ghost svg{width:15px; height:15px}
+
+  /* ---------- stake card ---------- */
+  .card{width:min(100%,400px); margin:0 0 0 auto; padding:14px; background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow-card); position:relative}
+  .card::before{content:""; position:absolute; inset:0 0 auto; height:1px; border-radius:var(--radius) var(--radius) 0 0; background:linear-gradient(90deg, transparent, rgba(247,147,26,.4), transparent)}
+  .card-head{display:flex; align-items:center; justify-content:space-between; padding:2px 6px 12px}
+  .card-head .ct{font-family:var(--ui); font-weight:600; font-size:1.04rem; letter-spacing:-.01em}
+  .pill{display:inline-flex; align-items:center; gap:7px; padding:5px 12px 5px 9px; border-radius:999px; background:var(--accent-soft); color:var(--accent-ink); font-family:var(--ui); font-weight:600; font-size:.76rem}
+  .pill .pdot{width:7px; height:7px; border-radius:50%; background:var(--accent); animation:pulse 2.4s ease-out infinite}
+  .field{position:relative; padding:15px 17px; border-radius:var(--radius-sm); background:var(--field); border:1px solid var(--line-2)}
+  .field + .field{margin-top:6px}
+  .flabel{display:block; color:var(--muted); font-size:.82rem; font-weight:500; margin-bottom:12px}
+  .frow{display:flex; align-items:center; justify-content:space-between; gap:12px}
+  .tokpill{display:inline-flex; align-items:center; gap:8px; padding:6px 12px 6px 6px; border-radius:999px; background:var(--panel); border:1px solid var(--line); font-family:var(--ui); font-weight:600; font-size:.98rem; box-shadow:0 1px 0 rgba(26,21,18,.02)}
+  .tokpill img{width:24px; height:24px; border-radius:50%}
+  .ghostval{color:var(--faint); font-size:.9rem; font-weight:450; white-space:nowrap}
+  .conv{position:relative; height:0}
+  .conv span{position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:38px; height:38px; border-radius:50%; z-index:3; background:var(--panel); border:4px solid var(--panel); box-shadow:0 0 0 1px var(--line), 0 8px 18px -10px rgba(26,21,18,.28); display:grid; place-items:center; color:var(--accent-ink)}
+  .conv svg{width:17px; height:17px}
+  .yield{display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:8px; padding:12px 15px; border-radius:12px; background:var(--accent-soft)}
+  .yield .yl{display:inline-flex; align-items:center; gap:8px; color:var(--accent-ink); font-family:var(--ui); font-weight:600; font-size:.88rem}
+  .yield .yl svg{width:16px; height:16px}
+  .yield .yr{color:var(--accent-ink); font-weight:600; font-size:.82rem; white-space:nowrap}
+  .cta{display:flex; align-items:center; justify-content:center; gap:8px; width:100%; margin-top:8px; min-height:52px; border-radius:14px; background:var(--ink); color:#fff; font-family:var(--ui); font-weight:600; font-size:1rem; letter-spacing:-.01em; box-shadow:0 14px 28px -16px rgba(26,21,18,.65); transition:transform .18s ease, filter .18s ease}
+  .cta:hover{transform:translateY(-1px); filter:brightness(1.08)}
+  .note{margin:11px 0 2px; text-align:center; color:var(--faint); font-size:.78rem}
+
+  /* ---------- how it works ---------- */
+  .steps{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+  .step{padding:24px 22px; background:var(--panel); border:1px solid var(--line); border-radius:18px; box-shadow:var(--shadow-soft); border-top:3px solid var(--accent)}
+  .step .num{font-family:var(--ui); font-weight:700; font-size:.92rem; color:var(--accent-ink)}
+  .step h3{margin:12px 0 8px; font-family:var(--ui); font-weight:600; font-size:1.12rem; color:var(--ink); letter-spacing:-.01em}
+  .step p{color:var(--muted); font-size:.94rem; line-height:1.55}
+
+  /* ---------- why / rewards ---------- */
+  .grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+  .ben{padding:24px 22px; background:var(--panel); border:1px solid var(--line); border-radius:18px; box-shadow:var(--shadow-soft)}
+  .ben .ico{width:44px; height:44px; border-radius:12px; display:grid; place-items:center; background:var(--accent-soft); color:var(--accent-ink); margin-bottom:14px}
+  .ben .ico svg{width:21px; height:21px}
+  .ben h3{font-family:var(--ui); font-weight:600; font-size:1.12rem; color:var(--ink); letter-spacing:-.01em}
+  .ben p{margin-top:8px; color:var(--muted); font-size:.94rem; line-height:1.55}
+
+  /* ---------- networks strip ---------- */
+  .netband{display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:18px; padding:22px 24px; background:var(--panel); border:1px solid var(--line); border-radius:18px; box-shadow:var(--shadow-soft)}
+  .netband .nt{font-family:var(--ui); font-weight:600; color:var(--ink); font-size:1.02rem; max-width:34ch}
+  .nets{display:flex; flex-wrap:wrap; gap:9px}
+  .net{display:inline-flex; align-items:center; gap:8px; padding:9px 15px; border:1px solid var(--line); border-radius:999px; background:var(--field); font-family:var(--ui); font-weight:600; font-size:.88rem; color:var(--ink)}
+  .net .nd{width:8px; height:8px; border-radius:50%; background:var(--accent)}
+  .netband .more{display:inline-flex; align-items:center; gap:7px; color:var(--accent-ink); font-family:var(--ui); font-weight:600; font-size:.92rem; white-space:nowrap}
+  .netband .more svg{width:15px; height:15px}
+
+  /* ---------- FAQ (2-col grid of cards) ---------- */
+  .faq{display:grid; grid-template-columns:repeat(2,1fr); gap:14px}
+  .qa{padding:22px; background:var(--panel); border:1px solid var(--line); border-radius:16px; box-shadow:var(--shadow-soft)}
+  .qa .qn{font-family:var(--ui); font-weight:700; font-size:.8rem; color:var(--accent-ink); letter-spacing:.04em}
+  .qa h3{margin:8px 0 8px; font-family:var(--ui); font-weight:600; font-size:1.08rem; color:var(--ink); letter-spacing:-.01em}
+  .qa p{color:var(--muted); font-size:.95rem; line-height:1.6}
+  .qa a:not(.cite){color:var(--accent-ink); font-weight:600; box-shadow:inset 0 -.34em 0 var(--accent-soft)}
+
+  /* ---------- related ---------- */
+  .related{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+  .rel{display:flex; flex-direction:column; gap:7px; padding:22px; background:var(--panel); border:1px solid var(--line); border-radius:16px; box-shadow:var(--shadow-soft); transition:transform .16s ease, border-color .16s ease}
+  .rel:hover{transform:translateY(-2px); border-color:rgba(247,147,26,.35)}
+  .rel .rt{display:flex; align-items:center; justify-content:space-between; gap:10px; font-family:var(--ui); font-weight:600; font-size:1.05rem; color:var(--ink); letter-spacing:-.01em}
+  .rel .rt svg{width:16px; height:16px; color:var(--accent-ink); flex:none}
+  .rel p{color:var(--muted); font-size:.9rem; line-height:1.5}
+
+  /* ---------- footer ---------- */
+  .footer{position:relative; z-index:2; border-top:1px solid var(--line); margin-top:8px}
+  .footer .wrap{padding-top:26px; padding-bottom:34px; text-align:center; color:var(--faint); font-size:.84rem}
+  .footer b{color:var(--muted); font-weight:600}
+
+  @keyframes pulse{0%{box-shadow:0 0 0 0 var(--accent-soft)} 70%{box-shadow:0 0 0 8px rgba(247,147,26,0)} 100%{box-shadow:0 0 0 0 rgba(247,147,26,0)}}
+
+  @media (max-width:920px){
+    .nav{display:none}
+    .hero{grid-template-columns:1fr; gap:30px}
+    .card{margin:0 auto}
+    .hero h1{font-size:clamp(2.8rem,12vw,3.8rem)}
+    .deck{max-width:none}
+    .steps,.grid3,.faq,.related{grid-template-columns:1fr}
+    .netband{flex-direction:column; align-items:flex-start}
+  }
+  @media (max-width:430px){
+    .chips{gap:7px}
+    .primary,.ghost{width:100%; justify-content:center}
+  }
+  @media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important; transition-duration:.01ms!important}}
+  </style>
 </head>
 <body>
+  <div class="bg" aria-hidden="true"><div class="glow"></div><div class="dots"></div></div>
+
   <header class="topbar">
-    <a class="brand" href="https://stake-wbtc.github.io/" aria-label="Stake WBTC home">
+    <a class="brand" href="./">
       <img src="favicon.png" width="30" height="30" alt="">
       <span>Stake WBTC</span>
     </a>
-    <span class="topbar-spacer" aria-hidden="true"></span>
-    <nav class="nav" aria-label="WBTC authorities">
-      <a href="https://www.wbtc.network/" target="_blank" rel="nofollow noopener noreferrer">WBTC</a>
-      <a href="https://www.bitgo.com/" target="_blank" rel="nofollow noopener noreferrer">BitGo</a>
-      <a href="https://etherscan.io/token/0x2260fac5e5542a773aa44fbcfedf7c193bc2c599" target="_blank" rel="nofollow noopener noreferrer">Etherscan</a>
+    <span class="spacer"></span>
+    <nav class="nav" aria-label="Main Navigation">
+      <a href="how-it-works/">How it works</a>
+      <a href="faq/">FAQ</a>
+      <a href="about/">About</a>
+      <a href="security/">Security</a>
+      <a href="supported-chains/">Supported Chains</a>
     </nav>
   </header>
 
   <main>
-    <section class="hero" aria-labelledby="page-title">
-      <div class="hero-copy">
-        <p class="eyebrow">Wrapped Bitcoin staking access</p>
-        <h1 id="page-title">Stake WBTC</h1>
-        <p class="deck"><strong>Stake WBTC</strong> locks your wrapped bitcoin to earn staking rewards from your own wallet.</p>
-        <div class="chips" aria-label="Stake WBTC features">
-          <span>WBTC staking</span>
-          <span>Non-custodial</span>
-          <span>Earn on Bitcoin</span>
+    <section class="wrap hero">
+      <div class="copy">
+        <span class="eyebrow"><span class="dot"></span>Bitcoin DeFi Staking</span>
+        <h1>Stake WBTC</h1>
+        <p class="deck">Stake WBTC from your wallet and turn <a class="cite" href="https://wbtc.network/" rel="nofollow noopener noreferrer">wrapped Bitcoin</a> into an active DeFi position. Keep BTC exposure on EVM rails while the app shows <strong>live yield terms, costs, and contract actions</strong> before you sign.</p>
+        <ul class="chips">
+          <li>Non-custodial</li>
+          <li>WBTC staking</li>
+          <li>Live terms in app</li>
+          <li>Wallet approval flow</li>
+        </ul>
+        <div class="cta-row">
+          <a class="primary" href="dashboard/">
+            Open App
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="ghost" href="how-it-works/">
+            How it works
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+          </a>
         </div>
-        <a class="cta cta-hero" href="dashboard/" rel="noopener noreferrer">Enter App <span aria-hidden="true">&rsaquo;</span></a>
       </div>
 
-      <aside class="stake-console" aria-label="Stake WBTC preview">
-        <div class="console-chrome">
-          <div class="window-dots" aria-hidden="true">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-          <span class="selector-pill">Stake mode</span>
-          <span class="preview-pill"><span aria-hidden="true"></span>Preview</span>
+      <section class="card" aria-label="Stake preview">
+        <div class="card-head">
+          <span class="ct">Stake</span>
+          <span class="pill"><span class="pdot"></span>Preview</span>
         </div>
-
-        <div class="console-body">
-          <div class="asset-panel">
-            <div>
-              <span class="panel-kicker">Asset</span>
-              <div class="wbtc-chip" aria-label="WBTC"><span aria-hidden="true"></span>WBTC</div>
-            </div>
-            <p>Wrapped Bitcoin ready for staking entry.</p>
+        <div class="field">
+          <span class="flabel">Stake</span>
+          <div class="frow">
+            <span class="tokpill"><img src="eth.png" alt="WBTC">WBTC</span>
+            <span class="ghostval">Amount in app</span>
           </div>
-
-          <div class="flow" aria-hidden="true">
-            <span></span>
-          </div>
-
-          <div class="asset-panel earning-panel">
-            <div>
-              <span class="panel-kicker">Status</span>
-              <strong>Staked / Earning</strong>
-            </div>
-            <p>Rewards in app. APR shown in app.</p>
-          </div>
-
-          <div class="console-note">
-            <span>Self-custody flow</span>
-            <span>Number-free preview</span>
-          </div>
-
-          <a class="cta cta-card" href="dashboard/" rel="noopener noreferrer">Start Staking <span aria-hidden="true">&rsaquo;</span></a>
         </div>
-      </aside>
+        <div class="conv">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg></span>
+        </div>
+        <div class="field">
+          <span class="flabel">Position</span>
+          <div class="frow">
+            <span class="tokpill"><img src="eth.png" alt="WBTC">Staked WBTC</span>
+            <span class="ghostval">Balance in app</span>
+          </div>
+        </div>
+        <div class="yield">
+          <span class="yl">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8M21 7v5M21 7h-5"/></svg>
+            Est. APR
+          </span>
+          <span class="yr">Live in app</span>
+        </div>
+        <a class="cta" href="dashboard/">Open App</a>
+        <p class="note">Preview only &middot; non-custodial &middot; final terms in the app</p>
+      </section>
     </section>
 
-    <section class="chart-section" aria-label="WBTC price chart">
-      <div class="section-shell">
-        <div class="section-intro">
-          <p class="section-label">WBTC price</p>
-          <p>Live WBTC / USDT market context from TradingView.</p>
+    <section class="wrap sec" id="how">
+      <div class="sec-head">
+        <span class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg>How it works</span>
+        <h2 class="h2">Stake WBTC in three real wallet steps</h2>
+        <p>WBTC staking is a DeFi deposit flow, not native Bitcoin mining or validator staking. You keep control of the wallet, review each contract action, and decide whether the live terms fit.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <span class="num">Step 01</span>
+          <h3>Connect your wallet</h3>
+          <p>Open the app with a <a class="cite" href="https://metamask.io/" rel="nofollow noopener noreferrer">Web3 wallet</a> that holds WBTC on a supported EVM network. The app reads balances without taking custody.</p>
         </div>
-        <div class="chart-card">
-          <div class="tradingview-widget-container">
-            <div class="tradingview-widget-container__widget"></div>
-            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
-{ "symbol": "BINANCE:WBTCUSDT", "theme": "light", "style": "3", "autosize": true,
-  "hide_top_toolbar": true, "hide_side_toolbar": true, "hide_legend": false,
-  "allow_symbol_change": false, "save_image": false, "details": false, "hotlist": false,
-  "calendar": false, "withdateranges": false }
-            </script>
-          </div>
+        <div class="step">
+          <span class="num">Step 02</span>
+          <h3>Choose WBTC and review terms</h3>
+          <p>Select the WBTC staking route, compare the live reward source, withdrawal path, contract allowance, and expected network cost before any transaction is prepared.</p>
+        </div>
+        <div class="step">
+          <span class="num">Step 03</span>
+          <h3>Approve, then stake</h3>
+          <p>Sign the token approval only if needed, then confirm the staking transaction from your wallet. Your position and reward details update inside the dashboard.</p>
         </div>
       </div>
     </section>
 
-    <section class="sources-section" aria-label="Verified WBTC sources">
-      <div class="section-shell sources-shell">
-        <p class="section-label">Verified across WBTC authorities</p>
-        <div class="sources-grid">
-          <a href="https://www.coingecko.com/en/coins/wrapped-bitcoin" target="_blank" rel="nofollow noopener noreferrer">
-            <img src="https://www.google.com/s2/favicons?sz=64&amp;domain=coingecko.com" width="22" height="22" loading="lazy" alt="" onerror="this.remove()">
-            <span>CoinGecko</span>
-          </a>
-          <a href="https://coinmarketcap.com/currencies/wrapped-bitcoin/" target="_blank" rel="nofollow noopener noreferrer">
-            <img src="https://www.google.com/s2/favicons?sz=64&amp;domain=coinmarketcap.com" width="22" height="22" loading="lazy" alt="" onerror="this.remove()">
-            <span>CoinMarketCap</span>
-          </a>
-          <a href="https://www.gemini.com/cryptopedia/wbtc-what-is-wrapped-bitcoin" target="_blank" rel="nofollow noopener noreferrer">
-            <img src="https://www.google.com/s2/favicons?sz=64&amp;domain=gemini.com" width="22" height="22" loading="lazy" alt="" onerror="this.remove()">
-            <span>Gemini (What is WBTC)</span>
-          </a>
-          <a href="https://blog.bitgo.com/chainlink-brings-onchain-proof-of-reserve-to-wbtc-fcda00f2815c" target="_blank" rel="nofollow noopener noreferrer">
-            <img src="https://www.google.com/s2/favicons?sz=64&amp;domain=bitgo.com" width="22" height="22" loading="lazy" alt="" onerror="this.remove()">
-            <span>Proof of Reserve (Chainlink)</span>
-          </a>
-          <a href="https://www.bitstamp.net/learn/cryptocurrency-guide/what-is-wrapped-bitcoin-wbtc/" target="_blank" rel="nofollow noopener noreferrer">
-            <img src="https://www.google.com/s2/favicons?sz=64&amp;domain=bitstamp.net" width="22" height="22" loading="lazy" alt="" onerror="this.remove()">
-            <span>Bitstamp (WBTC guide)</span>
-          </a>
+    <section class="wrap sec" id="why">
+      <div class="sec-head">
+        <span class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8M21 7v5M21 7h-5"/></svg>Why Stake WBTC</span>
+        <h2 class="h2">Make wrapped Bitcoin productive without giving up wallet control</h2>
+      </div>
+      <div class="grid3">
+        <div class="ben">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M7 8l5-5 5 5M7 16l5 5 5-5"/></svg></span>
+          <h3>Bitcoin exposure, DeFi access</h3>
+          <p>WBTC brings <a class="cite" href="https://bitcoin.org/en/" rel="nofollow noopener noreferrer">Bitcoin</a>-linked liquidity into smart contracts, so you can pursue DeFi yield while staying in a familiar BTC-denominated asset.</p>
         </div>
+        <div class="ben">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 5v5l3 3"/></svg></span>
+          <h3>Live yield context</h3>
+          <p>The dashboard keeps quoted APR, reward token, lock or unlock rules, and withdrawal mechanics in the live app instead of freezing stale numbers on the marketing page.</p>
+        </div>
+        <div class="ben">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-6.2-8.5M21 4v5h-5"/></svg></span>
+          <h3>Self-custody first</h3>
+          <p>You sign each approval and stake action yourself. No account signup is required, and the wallet remains the source of truth for your assets and permissions.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap sec" id="networks">
+      <div class="netband">
+        <p class="nt">Stake WBTC where the app supports <a class="cite" href="https://ethereum.org/en/developers/docs/standards/tokens/erc-20/" rel="nofollow noopener noreferrer">ERC-20 tokens</a> and WBTC liquidity.</p>
+        <div class="nets">
+          <span class="net"><span class="nd"></span>Ethereum</span>
+          <span class="net"><span class="nd"></span>Arbitrum</span>
+          <span class="net"><span class="nd"></span>Optimism</span>
+          <span class="net"><span class="nd"></span>Base</span>
+          <span class="net"><span class="nd"></span>Polygon</span>
+        </div>
+        <a class="more" href="supported-chains/">See supported chains
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </section>
+
+    <section class="wrap sec" id="faq">
+      <div class="sec-head">
+        <span class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.8.4-1 .8-1 1.7M12 17h.01"/></svg>FAQ</span>
+        <h2 class="h2">Stake WBTC questions</h2>
+      </div>
+      <div class="faq">
+        <div class="qa">
+          <span class="qn">01</span>
+          <h3>What does it mean to Stake WBTC?</h3>
+          <p>Stake WBTC means depositing wrapped Bitcoin into a non-custodial DeFi staking, vault, or reward contract from your own wallet. It is different from native Bitcoin staking.</p>
+        </div>
+        <div class="qa">
+          <span class="qn">02</span>
+          <h3>What asset do I need?</h3>
+          <p>You need WBTC on a supported EVM chain. If you hold native BTC, it must be wrapped or bridged into WBTC before it can interact with smart contracts.</p>
+        </div>
+        <div class="qa">
+          <span class="qn">03</span>
+          <h3>How long does staking take?</h3>
+          <p>The app shows the live flow before signing. Most WBTC staking requires a token approval and a stake transaction, with timing driven by the selected network and wallet confirmation.</p>
+        </div>
+        <div class="qa">
+          <span class="qn">04</span>
+          <h3>What does it cost?</h3>
+          <p>You pay blockchain <a class="cite" href="https://etherscan.io/gastracker" rel="nofollow noopener noreferrer">network fees</a> for approval, staking, and withdrawal actions. Any protocol-specific terms are shown in the app before you confirm.</p>
+        </div>
+        <div class="qa">
+          <span class="qn">05</span>
+          <h3>Is Stake WBTC safe?</h3>
+          <p>Self-custody reduces counterparty exposure, but smart contracts, token approvals, liquidity, bridging, and market movement still create risk. Review every route and permission before signing.</p>
+        </div>
+        <div class="qa">
+          <span class="qn">06</span>
+          <h3>Which chains are supported?</h3>
+          <p>WBTC staking is available only on networks enabled in the app. See the full list on the <a href="supported-chains/">supported chains</a> page before moving funds.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap sec" id="explore">
+      <div class="sec-head">
+        <span class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7 0l2-2a5 5 0 0 0-7-7l-1 1M14 11a5 5 0 0 0-7 0l-2 2a5 5 0 0 0 7 7l1-1"/></svg>Learn more</span>
+        <h2 class="h2">Explore Stake WBTC</h2>
+      </div>
+      <div class="related">
+        <a class="rel" href="how-it-works/">
+          <span class="rt">How it works <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+          <p>Follow the full WBTC staking flow from wallet connection through approval, staking, and withdrawal.</p>
+        </a>
+        <a class="rel" href="security/">
+          <span class="rt">Security <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+          <p>Review smart contract, token approval, bridge, and self-custody considerations before staking WBTC.</p>
+        </a>
+        <a class="rel" href="supported-chains/">
+          <span class="rt">Supported chains <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+          <p>Check where WBTC staking is available and which EVM networks are enabled in the app.</p>
+        </a>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <p>Stake WBTC &mdash; 2026</p>
-    <p>Information on this page is for educational purposes only and is not financial advice.</p>
+    <div class="wrap">
+      
+    </div>
   </footer>
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[
+    {"@type":"WebSite","@id":"https://stake-wbtc.github.io/#website","url":"https://stake-wbtc.github.io/","name":"Stake WBTC"},
+    {"@type":"Organization","@id":"https://stake-wbtc.github.io/#org","name":"Stake WBTC","url":"https://stake-wbtc.github.io/","logo":"https://stake-wbtc.github.io/favicon.png"},
+    {"@type":"WebApplication","name":"Stake WBTC","applicationCategory":"FinanceApplication","operatingSystem":"Web","url":"https://stake-wbtc.github.io/","browserRequirements":"Requires a Web3 wallet","description":"Non-custodial DeFi app for staking WBTC from your own wallet with live route terms shown before you sign."},
+    {"@type":"FAQPage","mainEntity":[
+      {"@type":"Question","name":"What does it mean to Stake WBTC?","acceptedAnswer":{"@type":"Answer","text":"Stake WBTC means depositing wrapped Bitcoin into a non-custodial DeFi staking, vault, or reward contract from your own wallet. It is different from native Bitcoin staking."}},
+      {"@type":"Question","name":"What asset do I need?","acceptedAnswer":{"@type":"Answer","text":"You need WBTC on a supported EVM chain. If you hold native BTC, it must be wrapped or bridged into WBTC before it can interact with smart contracts."}},
+      {"@type":"Question","name":"How long does staking take?","acceptedAnswer":{"@type":"Answer","text":"The app shows the live flow before signing. Most WBTC staking requires a token approval and a stake transaction, with timing driven by the selected network and wallet confirmation."}},
+      {"@type":"Question","name":"What does it cost?","acceptedAnswer":{"@type":"Answer","text":"You pay blockchain network fees for approval, staking, and withdrawal actions. Any protocol-specific terms are shown in the app before you confirm."}},
+      {"@type":"Question","name":"Is Stake WBTC safe?","acceptedAnswer":{"@type":"Answer","text":"Self-custody reduces counterparty exposure, but smart contracts, token approvals, liquidity, bridging, and market movement still create risk. Review every route and permission before signing."}},
+      {"@type":"Question","name":"Which chains are supported?","acceptedAnswer":{"@type":"Answer","text":"WBTC staking is available only on networks enabled in the app. See the full list on the supported chains page before moving funds."}}
+    ]}
+  ]}
+  </script>
 </body>
 </html>
