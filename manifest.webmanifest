@@ -1,0 +1,19 @@
+{
+  "name": "Stake WBTC",
+  "short_name": "Stake WBTC",
+  "description": "Stake WBTC through lending markets, liquidity pools, and vaults. How WBTC yield works, custody and lock-up realities, risks, and how to start and withdraw.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "lang": "en",
+  "background_color": "#f5f6f8",
+  "theme_color": "#f5f6f8",
+  "icons": [
+    {
+      "src": "favicon.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
