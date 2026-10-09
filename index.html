@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -126,7 +126,7 @@
     .cd2687a{position:relative;cursor:pointer;padding:1.2rem 3.3rem 1.2rem 1.35rem;list-style:none;font:500 1.05rem/1.5 var(--display);color:var(--text)}
     .cd2687a::-webkit-details-marker{display:none}
     .cd2687a::after{content:"+";position:absolute;right:1.35rem;top:1.15rem;color:var(--accent);font-size:1.3rem}
-    .cd4166c[open]>.cd2687a::after{content:"в€’"}
+    .cd4166c[open]>.cd2687a::after{content:"−"}
     .cd4166c[open]{border-color:color-mix(in srgb,var(--accent) 35%,transparent)}
     .cd2687a:focus-visible{outline-offset:-5px;border-radius:var(--radius)}
     .c66b079{padding:0 1.35rem 1.35rem;color:var(--muted);font-size:.95rem;line-height:1.85;overflow-wrap:anywhere}
@@ -157,7 +157,7 @@
       <div class="c767b33">
         <a class="c7b7951" href="#key-facts">Key facts</a>
         <a class="c7b7951" href="#sources">Sources</a>
-        <a class="c9f8845" href="dashboard/">Open app <span aria-hidden="true">в†—</span></a>
+        <a class="c9f8845" href="dashboard/">Open app <span aria-hidden="true">↗</span></a>
       </div>
     </nav>
     <div class="c0d6284"><nav class="cdc01a0" aria-label="Breadcrumb"><a href="dashboard/">Home</a> <span>/</span> <span>Staking</span> <span>/</span> <span>Stake WBTC</span></nav></div>
@@ -269,10 +269,10 @@
         amount.setAttribute('aria-invalid', String(Number.isNaN(value)));
         apy.setAttribute('aria-invalid', String(Number.isNaN(rate)));
         if (Number.isNaN(value) || Number.isNaN(rate)) {
-          received.textContent = 'вЂ”';
-          total.textContent = 'вЂ”';
-          apyout.textContent = 'вЂ”';
-          help.textContent = 'Enter an amount (1вЂ“1,000,000) and an APY (0вЂ“1,000%).';
+          received.textContent = '—';
+          total.textContent = '—';
+          apyout.textContent = '—';
+          help.textContent = 'Enter an amount (1–1,000,000) and an APY (0–1,000%).';
           return;
         }
         const years = Number(period.value) || 1;
