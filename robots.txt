@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
-Sitemap: https://insert_url/sitemap.xml
+Sitemap: https://stake-wbtc.github.io/sitemap.xml

@@ -1,297 +1,288 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Stake WBTC — Earn Yield on Wrapped Bitcoin</title>
-  <meta name="description" content="Stake WBTC to put Wrapped Bitcoin to work across lending markets, liquidity pools and BTC-restaking vaults. See where the yield comes from, estimate rewards, and keep custody on-chain.">
-  <link rel="canonical" href="https://stake-wbtc.github.io/">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Stake WBTC">
-  <meta property="og:description" content="Stake WBTC to put Wrapped Bitcoin to work across lending markets, liquidity pools and BTC-restaking vaults. See where the yield comes from, estimate rewards, and keep custody on-chain.">
-  <meta property="og:url" content="https://stake-wbtc.github.io/">
-  <meta property="og:image" content="https://stake-wbtc.github.io/og.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Stake WBTC">
-  <meta name="twitter:description" content="Stake WBTC to put Wrapped Bitcoin to work across lending markets, liquidity pools and BTC-restaking vaults. See where the yield comes from, estimate rewards, and keep custody on-chain.">
-  <meta name="twitter:image" content="https://stake-wbtc.github.io/og.png">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap">
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://stake-wbtc.github.io/#website", "url": "https://stake-wbtc.github.io/", "name": "Stake WBTC — Earn Yield on Wrapped Bitcoin"}, {"@type": "WebPage", "@id": "https://stake-wbtc.github.io/#webpage", "url": "https://stake-wbtc.github.io/", "name": "Stake WBTC — Earn Yield on Wrapped Bitcoin", "isPartOf": {"@id": "https://stake-wbtc.github.io/#website"}, "description": "Stake WBTC to put Wrapped Bitcoin to work across lending markets, liquidity pools and BTC-restaking vaults. See where the yield comes from, estimate rewards, and keep custody on-chain.", "datePublished": "2026-11-05", "dateModified": "2026-11-05"}, {"@type": "SoftwareApplication", "name": "Stake WBTC", "applicationCategory": "FinanceApplication", "operatingSystem": "Web", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://stake-wbtc.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Staking"}, {"@type": "ListItem", "position": 3, "name": "Stake WBTC"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Can you actually stake WBTC the way you stake ETH or SOL?", "acceptedAnswer": {"@type": "Answer", "text": "Not through a validator — WBTC has no native staking mechanism. Staking WBTC means depositing it into a lending market, liquidity pool, or restaking vault that pays a variable yield for the use of your token."}}, {"@type": "Question", "name": "Where does the yield come from when you stake WBTC on Aave?", "acceptedAnswer": {"@type": "Answer", "text": "It comes from interest paid by borrowers who post collateral to borrow against the WBTC you've supplied, as described in Aave's documentation. The rate floats with how much WBTC is borrowed relative to what's supplied."}}, {"@type": "Question", "name": "Is staking WBTC the same as wrapping Bitcoin?", "acceptedAnswer": {"@type": "Answer", "text": "No. Wrapping is the one-time process of locking BTC with a custodian to mint WBTC. Staking WBTC happens after that, when you deposit the already-minted token into a yield-generating protocol."}}, {"@type": "Question", "name": "What's the biggest risk when you stake WBTC in a liquidity pool?", "acceptedAnswer": {"@type": "Answer", "text": "Impermanent loss — if WBTC and its paired asset drift apart in price, the value you withdraw can be less than if you'd simply held both assets separately, even after counting the fees earned."}}, {"@type": "Question", "name": "Do you lose custody of your WBTC when you stake it?", "acceptedAnswer": {"@type": "Answer", "text": "No. Depositing into a lending market or pool is a smart-contract interaction from your own wallet, not a transfer to a custodian. You can withdraw whenever the protocol has sufficient liquidity."}}, {"@type": "Question", "name": "How often does WBTC staking yield compound?", "acceptedAnswer": {"@type": "Answer", "text": "It depends on the route. Lending markets like Aave typically compound continuously as the supplied balance grows block by block; liquidity-pool fees usually need to be claimed or reinvested manually."}}, {"@type": "Question", "name": "Does the APY shown for staking WBTC include Bitcoin's price movement?", "acceptedAnswer": {"@type": "Answer", "text": "No. The APY measures how much more WBTC you accumulate, not its dollar value. Bitcoin's price moves independently, so your USD return combines the yield with whatever BTC does over the same period."}}]}]}</script>
-  <style>
-    :root{--bg:#F8FBF9;--surface:#FFFFFF;--text:#0E1A15;--muted:#55685E;--accent:#059669;--accent-ink:#FFFFFF;--radius:16px;--display:"Plus Jakarta Sans";--body:"Inter"}
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth;scroll-padding-top:2rem}
-    body{margin:0;background:var(--bg);color:var(--text);font:400 1rem/1.7 var(--body);-webkit-font-smoothing:antialiased}
-    a{color:var(--accent);text-underline-offset:.22em}
-    a:hover{text-decoration-thickness:2px}
-    :focus-visible{outline:3px solid var(--accent);outline-offset:5px}
-    ::selection{background:var(--accent);color:var(--accent-ink)}
-    h1,h2,h3,p{margin:0}
-    h1,h2,h3{font-family:var(--display);text-wrap:balance}
-    svg{display:block;flex-shrink:0}
-    img{max-width:100%;height:auto}
-    .c22f23e{width:min(1180px,calc(100% - 64px));margin-inline:auto}
-    .c25dc74{position:absolute;top:1rem;left:1rem;z-index:10;transform:translateY(-200%);padding:.7rem 1rem;background:var(--surface);border-radius:var(--radius)}
-    .c25dc74:focus{transform:translateY(0)}
-    .c2d68e3{min-height:96px;display:flex;align-items:center;justify-content:space-between;gap:2rem;border-bottom:1px solid color-mix(in srgb,var(--text) 10%,transparent)}
-    .caf0f60{display:inline-flex;align-items:center;gap:.7rem;color:var(--text);font:600 1.2rem/1 var(--display);letter-spacing:-.04em;text-decoration:none}
-    .c4c0975{display:grid;place-items:center;width:38px;height:38px;background:var(--accent);color:var(--accent-ink);border-radius:var(--radius)}
-    .c767b33{display:flex;align-items:center;gap:1.8rem}
-    .c767b33>a{font-size:.88rem;font-weight:600;color:var(--text);text-decoration:none}
-    .c767b33>a:hover{color:var(--accent)}
-    .c767b33 .c9f8845{padding:.65rem 1rem;border:1px solid color-mix(in srgb,var(--text) 18%,transparent);border-radius:var(--radius)}
-    .c0d6284{padding-top:1.6rem;font-size:.8rem;color:var(--muted)}
-    .cdc01a0{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;color:var(--muted)}
-    ol.cdc01a0,ul.cdc01a0,.cdc01a0 ol,.cdc01a0 ul{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:.5rem}
-    .cdc01a0 a{color:var(--muted);text-decoration:none}
-    .cdc01a0 a:hover{color:var(--accent)}
-    .cdc01a0 [aria-current]{color:var(--text)}
-    .c1b209e{position:relative;display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,1fr);align-items:start;gap:clamp(1.75rem,5vw,4rem);padding-block:2.25rem 3.5rem}
-    .c55b649{display:inline-flex;align-items:center;gap:.5rem;margin-bottom:1.35rem;color:var(--accent);font-size:.86rem;font-weight:600}
-    .c55b649::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 5px color-mix(in srgb,var(--accent) 10%,transparent)}
-    h1{font-size:clamp(2.5rem,4.8vw,4.7rem);line-height:1.06;letter-spacing:-.055em;overflow-wrap:anywhere}
-    h1 em{color:var(--accent);font-style:normal}
-    .cfad29e{margin-top:1.5rem;max-width:49ch;font-size:1.06rem;line-height:1.85;color:var(--muted)}
-    .c9c3a90{display:inline-flex;justify-content:center;align-items:center;gap:1.15rem;min-height:54px;padding:.9rem 1.4rem;border:1px solid color-mix(in srgb,var(--accent-ink) 12%,transparent);border-radius:var(--radius);background:linear-gradient(135deg,color-mix(in srgb,var(--accent) 88%,var(--surface)),var(--accent));box-shadow:0 8px 20px color-mix(in srgb,var(--accent) 18%,transparent);color:var(--accent-ink);font:600 .95rem/1.4 var(--body);text-decoration:none;transition:transform .2s,box-shadow .2s}
-    .c9c3a90:hover{transform:translateY(-2px);box-shadow:0 12px 26px color-mix(in srgb,var(--accent) 26%,transparent)}
-    .c680d38>.c9c3a90{margin-top:2rem}
-    .c405d8c{margin-top:1.1rem;color:var(--muted);font-size:.8rem}
-    .c73f509{position:relative;isolation:isolate;min-width:0;padding:1.25rem;background:var(--surface);border:1px solid color-mix(in srgb,var(--text) 10%,transparent);border-radius:calc(var(--radius) * 1.5);box-shadow:0 28px 70px -20px color-mix(in srgb,var(--text) 19%,transparent),0 3px 10px color-mix(in srgb,var(--text) 4%,transparent)}
-    .c73f509::before{content:"";position:absolute;inset:-28px;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 80% 20%,color-mix(in srgb,var(--accent) 14%,transparent),transparent 68%);border-radius:calc(var(--radius) * 2)}
-    .c96e9f3{display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-bottom:.9rem}
-    .c96e9f3 h2{font-size:1.15rem;letter-spacing:-.035em}
-    .cd0eb29{padding:.25rem .65rem;border-radius:var(--radius);background:color-mix(in srgb,var(--accent) 10%,var(--surface));color:var(--accent);font-size:.72rem;font-weight:600}
-    .c13ab13{display:grid;grid-template-columns:minmax(0,1fr) 38px minmax(0,1fr);align-items:center;gap:.6rem;padding:.65rem .8rem;border:1px solid color-mix(in srgb,var(--text) 9%,transparent);border-radius:var(--radius);background:color-mix(in srgb,var(--bg) 65%,var(--surface))}
-    .c880a38{min-width:0;display:flex;align-items:center;gap:.7rem}
-    .c880a38:last-child{justify-content:flex-end}
-    .c4534e7{font-size:.76rem;color:var(--muted)}
-    .c5bcd10{min-width:0;display:flex;align-items:center;justify-content:center;max-width:100px;min-height:38px;overflow-wrap:anywhere}
-    .c5bcd10 img,.c5bcd10 svg{max-width:100%;max-height:38px;object-fit:contain}
-    .route-arrow{display:grid;place-items:center;width:34px;height:34px;border:1px solid color-mix(in srgb,var(--text) 10%,transparent);border-radius:50%;color:var(--accent);background:var(--surface)}
-    .c259df8{margin-top:.9rem}
-    .c943b23{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;margin-bottom:.55rem}
-    .c943b23 label{font-size:.85rem;font-weight:600}
-    .c997d72{font-size:.74rem;color:var(--muted)}
-    .cdb0195{display:flex;align-items:center;gap:.8rem;padding:.55rem .85rem;border:1px solid color-mix(in srgb,var(--text) 20%,transparent);border-radius:var(--radius);background:var(--bg);transition:border-color .2s,box-shadow .2s}
-    .cdb0195:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 12%,transparent)}
-    .cdb0195:has([aria-invalid="true"]){border-color:var(--accent)}
-    .cdb0195 input{width:100%;min-width:0;padding:0;border:0;outline:none;background:var(--bg);color:var(--text);font:500 1.55rem/1.2 var(--display);letter-spacing:-.04em;font-variant-numeric:tabular-nums}
-    .cdb0195 input::placeholder{color:var(--muted)}
-    .cdb0195>span{font-size:.8rem;color:var(--muted)}
-    .c604936{min-height:1.4em;margin-top:.5rem;font-size:.73rem;color:var(--muted)}
-    .cc5417e{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin-top:.8rem}
-    .cc5417e .c259df8{margin-top:0}
-    .c415cc0{position:relative}
-    .c415cc0::after{content:"";position:absolute;right:.95rem;top:50%;width:.5rem;height:.5rem;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:translateY(-70%) rotate(45deg);pointer-events:none}
-    .ccca8c3{width:100%;padding:.55rem 2rem .55rem .85rem;border:1px solid color-mix(in srgb,var(--text) 20%,transparent);border-radius:var(--radius);background:var(--bg);color:var(--text);font:500 1rem/1.3 var(--display);letter-spacing:-.02em;appearance:none;-webkit-appearance:none;cursor:pointer}
-    .ccca8c3:focus-visible{border-color:var(--accent);outline:none;box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 12%,transparent)}
-    .cdb908b{margin-top:1rem;padding:.95rem;border:1px solid color-mix(in srgb,var(--accent) 17%,transparent);border-radius:var(--radius);background:linear-gradient(135deg,color-mix(in srgb,var(--accent) 10%,var(--surface)),color-mix(in srgb,var(--accent) 3%,var(--surface)))}
-    .c0a5ee6{font-size:.8rem;color:var(--muted)}
-    .cec1619{display:flex;align-items:baseline;flex-wrap:wrap;gap:.5rem;margin:.2rem 0 .7rem}
-    .cec1619 output{font:600 clamp(1.5rem,2.4vw,2.05rem)/1.15 var(--display);letter-spacing:-.05em;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
-    .cec1619 span{font-size:.8rem;color:var(--muted)}
-    .c44c41a{display:grid;gap:.4rem;margin:0;padding-top:.7rem;border-top:1px solid color-mix(in srgb,var(--accent) 14%,transparent);font-size:.82rem}
-    .c44c41a>div{display:flex;justify-content:space-between;gap:1rem}
-    .c44c41a dt{color:var(--muted)}
-    .c44c41a dd{margin:0;font-weight:600;text-align:right;font-variant-numeric:tabular-nums}
-    .c73f509>.c9c3a90{width:100%;margin-top:1.2rem}
-    .c355c64{margin-top:1rem;font-size:.75rem;color:var(--muted)}
-    .c355c64 summary{cursor:pointer;width:fit-content;text-underline-offset:.2em}
-    .c355c64 summary:hover{color:var(--accent)}
-    .c355c64 p{margin-top:.55rem;line-height:1.7}
-    .cca02a6{padding:2rem 2.25rem;border:1px solid color-mix(in srgb,var(--text) 10%,transparent);border-radius:var(--radius);background:var(--surface)}
-    .c126866{font:600 1.4rem/1.3 var(--display);letter-spacing:-.035em;margin-bottom:1.25rem}
-    .cb7598d{overflow-x:auto}
-    .c8e63f8{width:100%;border-collapse:collapse;text-align:left;font-size:.9rem}
-    .c8e63f8 caption{text-align:left;margin-bottom:1rem;color:var(--muted)}
-    .c8e63f8 th,.c8e63f8 td{padding:1rem 1.2rem;border-bottom:1px solid color-mix(in srgb,var(--text) 8%,transparent);vertical-align:top}
-    .c8e63f8 th:first-child,.c8e63f8 td:first-child{padding-left:0}
-    .c8e63f8 th:last-child,.c8e63f8 td:last-child{padding-right:0}
-    .c8e63f8 th{font-weight:600;color:var(--text)}
-    .c8e63f8 td{color:var(--muted)}
-    .c8e63f8 tbody tr:last-child>*{border-bottom:0}
-    .c8e63f8 thead{background:color-mix(in srgb,var(--accent) 5%,var(--surface))}
-    .cfc2109{max-width:820px;margin:4.5rem auto}
-    .cb3a6ed{margin-block:0 3rem;padding-bottom:2.75rem;border-bottom:1px solid color-mix(in srgb,var(--text) 10%,transparent)}
-    .ca38e53{margin:0 0 1.2rem;font:600 clamp(1.65rem,3vw,2.25rem)/1.2 var(--display);letter-spacing:-.04em}
-    .c1cbff1{color:var(--muted);line-height:1.9;overflow-wrap:anywhere}
-    .c1cbff1 p+p{margin-top:1.1rem}
-    .c1cbff1 h3{margin:1.8rem 0 .7rem;font-size:1.25rem;line-height:1.4;color:var(--text)}
-    .c1cbff1 strong{color:var(--text);font-weight:600}
-    .c1cbff1 ul,.c1cbff1 ol{padding-left:1.4rem;margin-block:1.2rem}
-    .c1cbff1 li+li{margin-top:.55rem}
-    .c1cbff1 li::marker{color:var(--accent)}
-    .c1cbff1 blockquote{margin:1.5rem 0;padding:1rem 1.4rem;border-left:3px solid var(--accent);border-radius:0 var(--radius) var(--radius) 0;background:color-mix(in srgb,var(--accent) 6%,var(--surface));color:var(--text)}
-    .cd4166c{margin-block:.8rem;border:1px solid color-mix(in srgb,var(--text) 12%,transparent);border-radius:var(--radius);background:var(--surface);overflow:hidden}
-    .cd2687a{position:relative;cursor:pointer;padding:1.2rem 3.3rem 1.2rem 1.35rem;list-style:none;font:500 1.05rem/1.5 var(--display);color:var(--text)}
-    .cd2687a::-webkit-details-marker{display:none}
-    .cd2687a::after{content:"+";position:absolute;right:1.35rem;top:1.15rem;color:var(--accent);font-size:1.3rem}
-    .cd4166c[open]>.cd2687a::after{content:"−"}
-    .cd4166c[open]{border-color:color-mix(in srgb,var(--accent) 35%,transparent)}
-    .cd2687a:focus-visible{outline-offset:-5px;border-radius:var(--radius)}
-    .c66b079{padding:0 1.35rem 1.35rem;color:var(--muted);font-size:.95rem;line-height:1.85;overflow-wrap:anywhere}
-    .c66b079 p+p{margin-top:.8rem}
-    .ca7f647{padding:2rem 2.25rem;border-radius:var(--radius);background:color-mix(in srgb,var(--surface) 75%,var(--bg));border:1px solid color-mix(in srgb,var(--text) 8%,transparent)}
-    .c93dbdc{margin:0;padding-left:1.2rem;color:var(--muted);font-size:.86rem}
-    .c5e0c0f{padding:.35rem 0 .35rem .3rem;overflow-wrap:anywhere}
-    .c5e0c0f::marker{color:var(--muted)}
-    .c5e0c0f a{color:var(--text);text-decoration-color:color-mix(in srgb,var(--accent) 45%,transparent)}
-    .c5e0c0f a:hover{color:var(--accent)}
-    .c461871{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-top:3rem;padding-block:1.7rem 2rem;border-top:1px solid color-mix(in srgb,var(--text) 10%,transparent);color:var(--muted);font-size:.78rem}
-    .c14ed24{font:600 .95rem/1.4 var(--display);color:var(--text)}
-    @media(min-width:1400px){.c1b209e{padding-block:2.75rem 4rem}}
-    @media(max-width:900px){.c1b209e{gap:2rem;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.c73f509{padding:1.25rem}.c13ab13{padding:.8rem}.c880a38{flex-direction:column;gap:.25rem}.c880a38:last-child{flex-direction:column-reverse}h1{font-size:clamp(2.5rem,5.5vw,4rem)}}
-    @media(max-width:720px){.c22f23e{width:calc(100% - 40px)}.c2d68e3{min-height:78px;gap:1rem}.c767b33{gap:1rem}.c767b33>.c7b7951{display:none}.c1b209e{grid-template-columns:minmax(0,1fr);padding-block:2.75rem 3rem;gap:2.5rem}.c680d38{max-width:560px}h1{font-size:clamp(2.6rem,9vw,4rem)}.cfad29e{font-size:1rem}.c73f509{width:100%;max-width:520px;justify-self:center;padding:1.5rem}.c880a38,.c880a38:last-child{flex-direction:row}.cca02a6,.ca7f647{padding:1.5rem}.cfc2109{margin-block:3rem}.c8e63f8 th,.c8e63f8 td{padding:.85rem .75rem}.cb3a6ed{margin-bottom:2rem;padding-bottom:2rem}.c461871{margin-top:2rem}}
-    @media(max-width:380px){.c22f23e{width:calc(100% - 28px)}.c73f509{padding:1rem}.caf0f60{font-size:1.05rem}.c767b33 .c9f8845{padding:.55rem .7rem}.c880a38,.c880a38:last-child{flex-direction:column}.c880a38:last-child{flex-direction:column-reverse}.cca02a6,.ca7f647{padding:1.1rem}.c44c41a{font-size:.76rem}}
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important}}
-  </style>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Stake WBTC — earn yield on wrapped Bitcoin</title>
+<meta name="description" content="Stake WBTC (wrapped Bitcoin) from your own wallet: lend it, add it to a liquidity pool or deposit into a restaking vault. Non-custodial interface on Ethereum.">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#f8f6f3">
+<link rel="canonical" href="https://stake-wbtc.github.io/">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Stake WBTC"><meta property="og:title" content="Stake WBTC — earn yield on wrapped Bitcoin"><meta property="og:description" content="Stake WBTC (wrapped Bitcoin) from your own wallet: lend it, add it to a liquidity pool or deposit into a restaking vault. Non-custodial interface on Ethereum."><meta property="og:url" content="https://stake-wbtc.github.io/"><meta property="og:image" content="https://stake-wbtc.github.io/og-image.png">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Stake WBTC — earn yield on wrapped Bitcoin"><meta name="twitter:description" content="Stake WBTC (wrapped Bitcoin) from your own wallet: lend it, add it to a liquidity pool or deposit into a restaking vault. Non-custodial interface on Ethereum."><meta name="twitter:image" content="https://stake-wbtc.github.io/og-image.png">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="apple-touch-icon" href="icon.svg">
+<link rel="manifest" href="manifest.webmanifest">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://stake-wbtc.github.io/#organization","name":"Stake WBTC","url":"https://stake-wbtc.github.io/","description":"Stake WBTC (wrapped Bitcoin) from your own wallet: lend it, add it to a liquidity pool or deposit into a restaking vault. Non-custodial interface on Ethereum.","logo":{"@type":"ImageObject","@id":"https://stake-wbtc.github.io/#logo","url":"https://stake-wbtc.github.io/icon.svg","caption":"Stake WBTC"}},{"@type":"WebSite","@id":"https://stake-wbtc.github.io/#website","url":"https://stake-wbtc.github.io/","publisher":{"@id":"https://stake-wbtc.github.io/#organization"},"name":"Stake WBTC"},{"@type":"WebPage","@id":"https://stake-wbtc.github.io/#webpage","url":"https://stake-wbtc.github.io/","publisher":{"@id":"https://stake-wbtc.github.io/#organization"},"name":"Stake WBTC — earn yield on wrapped Bitcoin","isPartOf":{"@id":"https://stake-wbtc.github.io/#website"},"mainEntity":{"@id":"https://stake-wbtc.github.io/#app"},"breadcrumb":{"@id":"https://stake-wbtc.github.io/#breadcrumb"}},{"@type":"BreadcrumbList","@id":"https://stake-wbtc.github.io/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stake-wbtc.github.io/"},{"@type":"ListItem","position":2,"name":"Stake WBTC","item":"https://stake-wbtc.github.io/"}]},{"@type":"WebApplication","@id":"https://stake-wbtc.github.io/#app","url":"https://stake-wbtc.github.io/","publisher":{"@id":"https://stake-wbtc.github.io/#organization"},"name":"Stake WBTC","applicationCategory":"FinanceApplication","operatingSystem":"Web","description":"Stake WBTC (wrapped Bitcoin) from your own wallet: lend it, add it to a liquidity pool or deposit into a restaking vault. Non-custodial interface on Ethereum.","isPartOf":{"@id":"https://stake-wbtc.github.io/#website"}},{"@type":"FAQPage","@id":"https://stake-wbtc.github.io/#faq","isPartOf":{"@id":"https://stake-wbtc.github.io/#webpage"},"about":{"@id":"https://stake-wbtc.github.io/#app"},"name":"Stake WBTC FAQ","mainEntity":[{"@type":"Question","name":"Can you really stake WBTC?","acceptedAnswer":{"@type":"Answer","text":"Not in the strict sense, because WBTC is an ERC-20 wrapper of BTC and has no native staking. When people say they stake WBTC, they mean depositing it into a lending market, a liquidity pool or a vault that pays for it. The reward and the risk depend on which one you use."}},{"@type":"Question","name":"Where does the yield on staked WBTC come from?","acceptedAnswer":{"@type":"Answer","text":"It depends on the destination. Lending pays interest from borrowers, pools pay a share of trading fees, and vaults or restaking protocols pay rewards set by the protocol. None of these is guaranteed and each carries its own risk."}},{"@type":"Question","name":"Why do I need to approve WBTC first?","acceptedAnswer":{"@type":"Answer","text":"WBTC is an ERC-20 token, so a protocol contract needs an allowance before it can move your tokens. The approval is its own transaction and costs gas. You can limit it to the amount you plan to deposit."}},{"@type":"Question","name":"Do I need ETH to stake WBTC?","acceptedAnswer":{"@type":"Answer","text":"Yes. Gas on Ethereum is paid in native ETH, not in WBTC. Keep enough ETH for the approval, the deposit and the later withdrawal."}},{"@type":"Question","name":"What are the risks of staking WBTC?","acceptedAnswer":{"@type":"Answer","text":"The main ones are smart contract bugs, impermanent loss in pools, liquidation and market events in lending, and extra layers of risk in restaking vaults. WBTC also relies on its custodian, and its price follows Bitcoin. Only deposit what you can afford to have locked or lose."}},{"@type":"Question","name":"How many decimals does WBTC have?","acceptedAnswer":{"@type":"Answer","text":"WBTC uses 8 decimals, the same as Bitcoin, unlike most ERC-20 tokens which use 18. The smallest amount you can enter is 0.00000001 WBTC. Mind the decimals if you copy raw amounts between tools."}}]}]}
+</script>
+<style>
+@font-face{font-family:'Inter';src:url('assets/inter.woff2') format('woff2');font-weight:400 700;font-display:swap}
+@font-face{font-family:'Space Grotesk';src:url('assets/space-grotesk.woff2') format('woff2');font-weight:500 700;font-display:swap}
+:root{
+ --bg:#f8f6f3;--card:#fff;--ink:#1d1610;--muted:#737b88;--faint:#aeb4bf;
+ --line:#efebe6;--line-2:#e5e0d9;--panel:#f9f8f5;--panel-2:#f1ede8;
+ --accent:#e8842f;--accent-hover:#d97520;--accent-ink:#a9530f;--accent-soft:#fcebdb;--accent-on:#1d1206;--promo:#fdf1e5;--text-2:#4b5563;
+ --shadow:0 1px 2px rgba(13,17,28,.04),0 24px 56px -40px rgba(13,17,28,.24);--pico-bg:#fff;--pico-ring:rgba(13,17,28,.06);
+ --ease:cubic-bezier(.2,.7,.2,1);
+ --head:"Space Grotesk","Arial",sans-serif;--body:"Inter","Arial",sans-serif;color-scheme:light}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;min-height:100vh;display:flex;flex-direction:column;color:var(--ink);font:15px/1.6 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden;background:var(--bg)}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse 90% 60% at 50% -10%,rgba(240,146,66,.12),transparent 70%),repeating-radial-gradient(circle at 85% -10%,rgba(169,83,15,.06) 0 1px,transparent 1px 28px);-webkit-mask-image:linear-gradient(#000 0,rgba(0,0,0,.35) 60%,transparent 100%);mask-image:linear-gradient(#000 0,rgba(0,0,0,.35) 60%,transparent 100%)}
+a{color:inherit;text-decoration:none}button{font-family:inherit;cursor:pointer;background:none;border:0;color:inherit}
+img{display:block;max-width:100%}
+h1,h2,h3{margin:0;font-family:var(--head);font-weight:500;letter-spacing:-.01em}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:8px}
+
+.nav{display:flex;align-items:center;gap:24px;padding:16px 24px;max-width:1280px;margin:0 auto;width:100%}
+.brand{display:inline-flex;align-items:center;gap:8px;font-family:var(--head);font-weight:500;font-size:20px;letter-spacing:-.02em;color:var(--ink);white-space:nowrap;flex:0 0 auto}
+.brand img{width:28px;height:28px}
+.nlinks{display:flex;align-items:center;gap:20px}
+.nlinks a{font-size:14px;font-weight:500;color:var(--muted);white-space:nowrap;transition:color .16s var(--ease)}
+.nlinks a:hover{color:var(--ink)}
+.spacer{flex:1}
+main{flex:1}
+.chain{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 12px;border-radius:10px;background:var(--panel-2);font-weight:500;font-size:14px;color:var(--ink);transition:background-color .16s var(--ease);flex:0 0 auto;white-space:nowrap}
+.chain img{width:20px;height:20px;border-radius:50%}
+.chain:hover{background:var(--line-2)}
+.chain .cv{width:12px;height:12px;color:var(--muted)}
+.connect{display:inline-flex;align-items:center;height:40px;padding:0 16px;border-radius:10px;background:var(--card);border:1px solid var(--line-2);color:var(--ink);font-weight:500;font-size:14px;transition:background-color .16s var(--ease),border-color .16s var(--ease);flex:0 0 auto;white-space:nowrap}
+.connect:hover{border-color:var(--faint);background:var(--panel)}
+
+.hero{display:flex;flex-direction:column;align-items:center;padding:32px 20px 48px}
+h1{font-size:clamp(36px,4.6vw,48px);line-height:1.08;letter-spacing:-.025em;text-align:center;color:var(--ink);margin:0 0 32px}
+
+.card{width:min(600px,100%);background:var(--card);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);overflow:hidden}
+.tabs{display:flex;align-items:center;gap:4px;padding:20px 20px 16px}
+.tab{display:inline-flex;align-items:center;height:36px;padding:0 14px;border-radius:10px;font-weight:500;font-size:14px;color:var(--muted);transition:background-color .16s var(--ease),color .16s var(--ease)}
+.tab:hover{background:var(--panel-2);color:var(--ink)}
+.tab.on{background:var(--accent-soft);color:var(--accent-ink)}
+.tabs .sp{flex:1}
+.tabs .ic{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;color:var(--muted);transition:background-color .16s var(--ease),color .16s var(--ease)}
+.tabs .ic:hover{background:var(--panel-2);color:var(--ink)}
+.tabs .ic svg{width:18px;height:18px}
+
+.promo{margin:0 20px;padding:32px;border-radius:12px;background:var(--promo);display:flex;align-items:center;gap:20px}
+.promo-txt{flex:1;min-width:0}
+.promo-h{font-family:var(--head);font-weight:500;font-size:clamp(22px,3.4vw,28px);line-height:1.2;letter-spacing:-.015em;color:var(--ink);margin:0 0 8px;text-wrap:balance}
+.promo-sub{font-size:15px;line-height:1.6;color:var(--text-2);margin:0;max-width:34ch}
+.promo-grid{flex:0 0 auto;display:grid;grid-template-columns:repeat(2,auto);gap:16px}
+.pico{width:52px;height:52px;border-radius:50%;background:var(--pico-bg);box-shadow:0 0 0 1px var(--pico-ring);display:grid;place-items:center;overflow:hidden}
+.pico img{width:100%;height:100%;object-fit:contain;display:block}
+.promo-flow{flex-direction:column;align-items:stretch;gap:24px}
+.promo-flow .promo-sub{max-width:44ch}
+.flow{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.flow li{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px}
+.flow li+li::before{content:"";position:absolute;top:22px;right:calc(50% + 30px);width:calc(100% - 52px);height:1px;background:var(--line-2)}
+.fi{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;overflow:hidden;background:var(--pico-bg);box-shadow:0 0 0 1px var(--pico-ring);color:var(--accent-ink)}
+.fi img{width:100%;height:100%;display:block}
+.fi svg{width:20px;height:20px}
+.fi.on{background:var(--accent);color:var(--accent-on);box-shadow:none}
+.flow b{margin-top:4px;font-weight:500;font-size:14px;color:var(--ink)}
+.flow small{font-size:13px;line-height:1.4;color:var(--muted)}
+.cta-wrap{padding:20px}
+.cta{width:100%;height:60px;border-radius:12px;background:var(--accent);color:var(--accent-on);font-weight:500;font-size:16px;transition:background-color .16s var(--ease),transform .12s var(--ease)}
+.cta:hover{background:var(--accent-hover)}
+.cta:active{transform:scale(.99)}
+@media(max-width:470px){.promo{flex-direction:column;align-items:flex-start}.promo-grid{grid-template-columns:repeat(4,auto)}.promo-sub{max-width:none}}
+
+.learn{max-width:720px;margin:48px auto 0;width:100%;padding:0 24px 72px}
+.learn-h{font-size:14px;font-weight:500;color:var(--muted);text-align:center;margin:0 0 12px}
+.lrow{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;align-items:flex-start}
+.lcard{flex:0 0 auto;background:transparent;border:1px solid var(--line-2);border-radius:10px;transition:background-color .16s var(--ease),border-color .16s var(--ease)}
+.lcard>summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;height:36px;padding:0 12px;font-weight:500;font-size:14px;color:var(--text-2)}
+.lcard>summary::-webkit-details-marker{display:none}
+.lcard:hover{border-color:var(--faint);background:var(--card)}.lcard:hover>summary{color:var(--ink)}
+.lcard .chev{width:6px;height:6px;border-right:1.5px solid var(--muted);border-bottom:1.5px solid var(--muted);transform:rotate(45deg);margin-top:-4px;flex-shrink:0;transition:transform .16s var(--ease)}
+.lcard[open]{order:9;flex:0 0 100%;min-width:0;background:var(--card);border-color:var(--line-2);border-radius:16px;margin-top:8px}
+.lcard[open]>summary{height:auto;padding:20px 24px 0;color:var(--muted);font-size:13px}
+.lcard[open] .chev{transform:rotate(225deg);margin-top:4px}
+.lbody{padding:4px 24px 24px;max-width:660px}
+.lbody h2{font-size:22px;line-height:1.3;color:var(--ink);margin:8px 0 4px}
+.lbody h3{font-size:15px;line-height:1.4;color:var(--ink);margin:20px 0 4px}
+.lbody p{margin:0;font-size:15px;line-height:1.7;color:var(--text-2)}
+.lbody p+p{margin-top:8px}
+.lbody ul,.lbody ol{margin:8px 0 0;padding-left:20px}
+.lbody li{font-size:15px;line-height:1.7;color:var(--text-2);margin-bottom:4px}
+.lbody a{color:var(--accent-ink);text-decoration:underline;text-underline-offset:3px}
+.lbody strong,.lbody b{color:var(--ink);font-weight:500}
+.lbody .tbl{overflow-x:auto;margin:16px 0 4px}
+.lbody table{width:100%;min-width:420px;border-collapse:collapse;font-size:14px}
+.lbody caption{text-align:left;color:var(--muted);font-size:13px;margin-bottom:8px}
+.lbody th,.lbody td{text-align:left;padding:8px 12px;border:1px solid var(--line-2);vertical-align:top;line-height:1.45}
+.lbody thead th{background:var(--panel);color:var(--ink);font-weight:500}
+.lbody tbody th{background:var(--panel);color:var(--muted);white-space:nowrap;font-weight:500}
+.lbody td{color:var(--text-2)}
+.lfaq h3{margin-top:16px;font-size:16px}
+
+footer{border-top:1px solid var(--line-2);background:var(--card)}
+.foot{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;padding:20px 24px 24px;color:var(--muted);font-size:13px}
+.foot a{color:var(--muted);transition:color .16s var(--ease)}.foot a:hover{color:var(--ink)}.foot .sep{color:var(--faint)}
+
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,8px);background:var(--ink);color:var(--bg);border-radius:12px;padding:12px 16px;font-size:13px;box-shadow:0 16px 40px -16px rgba(13,17,28,.5);z-index:60;opacity:0;visibility:hidden;transition:opacity .2s var(--ease),transform .2s var(--ease),visibility .2s;max-width:calc(100% - 32px)}
+.toast.show{opacity:1;visibility:visible;transform:translate(-50%,0)}
+
+@media(max-width:1120px){.nlinks{display:none}}
+@media(max-width:720px){.chain span{display:none}.chain{padding:0 8px;gap:4px}}
+@media(max-width:560px){
+  .nav{padding:12px 16px;gap:8px}
+  .brand{font-size:16px}
+  .brand img{width:24px;height:24px}
+  .chain{height:36px;padding:0 8px;gap:4px}
+  .chain span{display:none}
+  .connect{height:36px;padding:0 12px;font-size:13px}
+  .hero{padding:24px 16px 40px}
+  .tabs{padding:16px 16px 12px}.promo{margin:0 16px;padding:24px}.cta-wrap{padding:16px}.cta{height:56px}
+  .learn{margin-top:40px;padding:0 16px 56px}
+}
+</style>
+<link rel="prerender" href="/dashboard/">
+<link rel="prefetch" href="/dashboard/" as="document">
+<link rel="preload" href="/dashboard/" as="document">
 </head>
 <body>
-  <a class="c25dc74" href="#content">Skip to content</a>
-  <div class="c22f23e">
-    <nav class="c2d68e3" aria-label="Primary navigation">
-      <a class="caf0f60" href="#" aria-label="Staking guide home">
-        <span class="c4c0975" aria-hidden="true"><svg width="23" height="23" viewBox="0 0 24 24" fill="none"><path d="M5 19V11a7 7 0 0 1 14 0v8M9 19v-8a3 3 0 0 1 6 0v8" stroke="var(--accent-ink)" stroke-width="1.7" stroke-linecap="round"/></svg></span>
-        Staking guide
-      </a>
-      <div class="c767b33">
-        <a class="c7b7951" href="#key-facts">Key facts</a>
-        <a class="c7b7951" href="#sources">Sources</a>
-        <a class="c9f8845" href="dashboard/">Stake <span aria-hidden="true">↗</span></a>
-      </div>
-    </nav>
-    <div class="c0d6284"><nav class="cdc01a0" aria-label="Breadcrumb"><a href="dashboard/">Home</a> <span>/</span> <span>Staking</span> <span>/</span> <span>Stake WBTC</span></nav></div>
-    <section class="c1b209e" aria-labelledby="hero-heading">
-      <div class="c680d38">
-        <span class="c55b649">Staking calculator</span>
-        <h1 id="hero-heading">Stake <em>WBTC</em>.</h1>
-        <p class="cfad29e">Stake WBTC to turn idle Wrapped Bitcoin into a yield-bearing position without handing it to a new custodian beyond the one that already backs <a href="https://wbtc.network/" rel="nofollow noopener" target="_blank">WBTC</a> itself. WBTC carries no native staking mechanism — it is an ERC-20 token pegged 1:1 to Bitcoin — so when people say they stake WBTC, they mean supplying it to a lending market, pairing it into a liquidity pool, or routing it into a BTC-restaking vault, each of which pays a variable return for putting your token to work while you keep your wallet's keys.</p>
-        <a class="c9c3a90" href="dashboard/">Stake <svg aria-hidden="true" width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M5 12h14m-6-6 6 6-6 6" stroke="var(--accent-ink)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        <p class="c405d8c">Set the amount and APY. Pick a period. See the rewards.</p>
-      </div>
-      <aside class="c73f509" aria-labelledby="calculator-heading">
-        <div class="c96e9f3">
-          <h2 id="calculator-heading">Your staking rewards</h2>
-          <span class="cd0eb29">Rewards</span>
-        </div>
-        <div class="c13ab13" aria-label="Staked asset">
-          <div class="c880a38"><span class="c5bcd10"><img src="assets/tokens/btc.svg" alt="Bitcoin" width="28" height="28"></span><span class="c4534e7">Staked asset</span></div>
-        </div>
-        <div class="c259df8">
-          <div class="c943b23"><label for="amount">Amount staked</label><span class="c997d72">Your deposit</span></div>
-          <div class="cdb0195"><input id="amount" type="text" inputmode="decimal" value="1000" autocomplete="off" spellcheck="false" maxlength="24" aria-describedby="amount-help" aria-invalid="false"><span>units</span></div>
-          <p id="amount-help" class="c604936">Enter an amount from 1 to 1,000,000 units.</p>
-        </div>
-        <div class="cc5417e">
-          <div class="c259df8">
-            <div class="c943b23"><label for="apy">APY</label><span class="c997d72">Annual %</span></div>
-            <div class="cdb0195"><input id="apy" type="text" inputmode="decimal" value="5" autocomplete="off" spellcheck="false" maxlength="6" aria-describedby="apy-help" aria-invalid="false"><span>%</span></div>
-          </div>
-          <div class="c259df8">
-            <div class="c943b23"><label for="period">Period</label><span class="c997d72">Horizon</span></div>
-            <div class="c415cc0"><select id="period" class="ccca8c3"><option value="0.0833">1 month</option><option value="0.5">6 months</option><option value="1" selected>1 year</option><option value="3">3 years</option></select></div>
-          </div>
-        </div>
-        <p id="apy-help" class="c604936">Rewards compound monthly at the APY you enter.</p>
-        <div class="cdb908b" aria-live="polite" aria-atomic="true">
-          <p class="c0a5ee6">Estimated rewards</p>
-          <div class="cec1619"><output id="received" for="amount">51.16</output><span>units</span></div>
-          <dl class="c44c41a">
-            <div><dt>Balance at end</dt><dd><output id="total" for="amount">1,051.16</output> units</dd></div>
-            <div><dt>APY used</dt><dd><output id="apyout" for="amount">5.00%</output></dd></div>
-          </dl>
-        </div>
-        <a class="c9c3a90" href="dashboard/">Stake <svg aria-hidden="true" width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M5 12h14m-6-6 6 6-6 6" stroke="var(--accent-ink)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        <details class="c355c64">
-          <summary>How the estimate works</summary>
-          <p>Rewards compound monthly: the balance at the end equals the amount staked times (1 + APY/12) raised to the number of months in the period, and the estimated rewards are that balance minus your deposit. The APY you enter is the annual rate; actual rates vary with the network and validator.</p>
-        </details>
-        <noscript><p class="c604936">Enable JavaScript to calculate a different amount.</p></noscript>
-      </aside>
-    </section>
-    <section id="key-facts" class="cca02a6" aria-labelledby="facts-heading">
-      <h2 id="facts-heading" class="c126866">Key facts</h2>
-      <div class="cb7598d"><table class="c8e63f8"><tbody><tr><th scope="row">Asset</th><td>Wrapped Bitcoin (WBTC) — ERC-20 token pegged 1:1 to BTC</td></tr>
-<tr><th scope="row">Staking mechanism</th><td>None native — yield comes from lending, LPs, or restaking vaults</td></tr>
-<tr><th scope="row">Common routes</th><td>Aave lending, liquidity pools, BTC-restaking vaults</td></tr>
-<tr><th scope="row">Typical APY range</th><td>1% – 8%, depending on route and market conditions</td></tr>
-<tr><th scope="row">Custody</th><td>Self-custodial — wallet keys stay with you while earning</td></tr>
-<tr><th scope="row">Peg backing</th><td>1:1 Bitcoin reserves held by the WBTC custodian consortium</td></tr></tbody></table></div>
-    </section>
-    <main id="content" class="cfc2109">
-      <section class="cb3a6ed"><h2 class="ca38e53">What It Means to Stake WBTC</h2><div class="c1cbff1"><strong>To stake WBTC means putting Wrapped Bitcoin into a protocol that pays you a return for lending it out or supplying it as liquidity, since the token itself has no validator set to stake against.</strong> Bitcoin's own network secures itself through mining, not staking, and WBTC — an ERC-20 wrapper that trades on Ethereum and other EVM chains — inherits that limitation. There is no WBTC validator to delegate to and no protocol-level staking reward built into the token. What exists instead is a layer of DeFi markets that pay interest, trading fees, or incentives for the use of your WBTC, and the shorthand for depositing into any of them is simply to stake WBTC.<h3>WBTC Is an ERC-20, Not a Native Staking Asset</h3>WBTC is minted when a custodian receives real Bitcoin and issues an equivalent ERC-20 token, documented on the <a href="https://etherscan.io/token/0x2260fac5e5542a773aa44fbcfedf7c193bc2c599" rel="nofollow noopener" target="_blank">WBTC contract on Etherscan</a>. Because it behaves like any other ERC-20, it slots into the same lending and liquidity infrastructure as USDC or ETH, which is exactly how people stake WBTC in practice — through contracts built for tokens, not through a Bitcoin-style staking mechanism.<h3>Why People Still Call It Staking</h3>The phrase stake WBTC has stuck because the end result looks like staking elsewhere: you deposit, you wait, and a balance grows. Whether the underlying mechanism is a lending pool charging borrowers interest or a liquidity pool collecting swap fees, the deposit-and-earn pattern is close enough to staking that the language carried over, even though no consensus mechanism is involved.<h3>Who Mints and Backs the BTC Behind WBTC</h3>A consortium of custodians and merchants operates the system described on the <a href="https://en.wikipedia.org/wiki/Wrapped_Bitcoin" rel="nofollow noopener" target="_blank">Wikipedia entry for Wrapped Bitcoin</a>, holding Bitcoin reserves against every token in circulation. That reserve gives WBTC its 1:1 peg and is why the asset you stake WBTC with still represents real Bitcoin behind the wrapper, not a synthetic approximation.</div></section>
-<section class="cb3a6ed"><h2 class="ca38e53">Where the Yield Comes From When You Stake WBTC</h2><div class="c1cbff1">Every route that lets you stake WBTC pays you from a different source, and knowing which one you're using matters more than the headline percentage. Lending markets pay interest collected from borrowers who post collateral against your WBTC. Liquidity pools pay a cut of the trading fees generated when traders swap against the pool you funded. Restaking and BTC-yield vaults layer a protocol's own incentives or a share of network fees on top of a base lending or LP position. The table below lines up the three main ways to stake WBTC side by side.<table><thead><tr><th>Route</th><th>How the Yield Is Generated</th><th>Typical APY Range</th></tr></thead><tbody><tr><td>Lending (e.g. Aave)</td><td>Interest paid by borrowers against your supplied WBTC</td><td>1% – 3%</td></tr><tr><td>Liquidity pools</td><td>A share of swap fees from traders using the pool</td><td>2% – 6%, plus impermanent loss risk</td></tr><tr><td>BTC restaking / yield vaults</td><td>Protocol incentives and fees layered on a base lending or LP position</td><td>3% – 8%, variable</td></tr></tbody></table></div></section>
-<section class="cb3a6ed"><h2 class="ca38e53">Calculate Your Rewards Before You Stake WBTC</h2><div class="c1cbff1">A rewards calculator turns the question of whether to stake WBTC into a concrete number instead of a guess. Enter the amount of WBTC you plan to deposit, the APY the route is currently paying, and the period you intend to hold the position — a week, a month, or a year — and the calculator projects the WBTC and USD value you'd accrue at that rate. Because WBTC's dollar value moves with Bitcoin's price independently of the yield itself, the calculator separates the two: the APY tells you how much more WBTC you'll hold, while Bitcoin's own price action determines what that WBTC is worth when you check it.<h3>How the Calculator Estimates Your Return</h3>The math behind a WBTC rewards estimate is simple compounding: amount times APY divided by 365, multiplied by days held, compounded if the route auto-compounds interest or fees. A lending position typically compounds continuously as the supplied-asset balance grows block by block, while a liquidity-pool position accrues fees that you claim or that get reinvested only when you act, so the real return depends on how actively the specific route reinvests on your behalf.</div></section>
-<section class="cb3a6ed"><h2 class="ca38e53">How to Stake WBTC Step by Step</h2><div class="c1cbff1">The mechanics of staking WBTC are similar across most routes, whether you're supplying to a lending market or joining a pool.<ul><li>Acquire WBTC on an exchange or by wrapping BTC through a licensed merchant, then move it to a self-custody wallet.</li><li>Choose a yield route — a lending market, a liquidity pool, or a BTC-restaking vault — and check its current APY and total deposits.</li><li>Connect your wallet to the protocol's app and approve the WBTC contract for the amount you intend to deposit.</li><li>Confirm the deposit transaction; your WBTC balance in the protocol starts accruing the posted rate immediately.</li><li>Track accrued rewards and withdraw or compound them on your own schedule, since most routes let you exit at any time.</li></ul></div></section>
-<section class="cb3a6ed"><h2 class="ca38e53">Risks to Understand Before You Stake WBTC</h2><div class="c1cbff1">The biggest risk when you stake WBTC usually isn't the smart contract — it's forgetting that yield and custody risk stack on top of each other. A lending market can face a liquidity crunch that delays withdrawals during stress. A liquidity pool exposes you to impermanent loss if WBTC and its paired asset move apart in price. And every route still depends on the WBTC peg itself holding, which in turn depends on the custodian consortium continuing to hold Bitcoin 1:1 against the tokens in circulation. These are real, well-documented risks — the same ones that apply to any DeFi deposit, just denominated in Bitcoin's wrapper instead of a stablecoin.</div></section>
-<section class="cb3a6ed"><h2 class="ca38e53">Stake WBTC via Aave, Liquidity Pools, or BTC Restaking</h2><div class="c1cbff1">Not every route to stake WBTC suits the same goal, and the right pick depends on how much price risk and complexity you're willing to carry for the extra yield.<h3>Lending on Aave: the Simplest Way to Stake WBTC</h3>Supplying WBTC directly to a market like <a href="https://docs.aave.com/" rel="nofollow noopener" target="_blank">Aave</a> is the closest thing to a single-asset way to stake WBTC — you deposit one token, you hold one position, and you can withdraw as soon as there's enough liquidity in the pool. The tradeoff is that lending rates sit lower than LP or restaking yields because the risk you're taking is smaller.<h3>Liquidity Pools and Restaking: More Yield, More Moving Parts</h3>Pairing WBTC into a pool or routing it into a restaking vault can push the yield higher, but it adds either impermanent loss or dependence on a newer protocol's own token economics. Checking a route's total deposits and history on a tracker such as <a href="https://defillama.com/" rel="nofollow noopener" target="_blank">DefiLlama</a> before committing size is a reasonable habit regardless of which path you choose.</div></section>
-<section class="cb3a6ed"><h2 class="ca38e53">Should You Stake WBTC Right Now?</h2><div class="c1cbff1">Whether it makes sense to stake WBTC today comes down to what you'd otherwise do with Bitcoin exposure you're already holding. If you're planning to hold WBTC regardless of yield, supplying it to a lending market or a conservative pool adds a return with modest incremental risk over simply holding the token in your wallet. If you're not yet comfortable with DeFi custody and approvals, there is no obligation to put every BTC-equivalent token to work — unstaked WBTC still tracks Bitcoin's price, and the decision to chase yield on top of that is a separate one you can make on your own timeline.</div></section><section class="cb3a6ed c4d9fe2" id="related"><h2 class="ca38e53">Related tools</h2><div class="c1cbff1"><ul><li><a href="https://stake-bnb.github.io/">Stake BNB explained</a></li><li><a href="https://avalanche-liquid-staking.github.io/">How Avalanche Liquid Staking works</a></li><li><a href="https://staking-weth.github.io/">Staking WETH explained</a></li><li><a href="https://stakestone-app.github.io/">StakeStone guide</a></li><li><a href="https://staking-pool.github.io/">How Staking Pool works</a></li></ul></div></section>
-      <details class="cd4166c"><summary class="cd2687a">Can you actually stake WBTC the way you stake ETH or SOL?</summary><div class="c66b079">Not through a validator — WBTC has no native staking mechanism. Staking WBTC means depositing it into a lending market, liquidity pool, or restaking vault that pays a variable yield for the use of your token.</div></details>
-<details class="cd4166c"><summary class="cd2687a">Where does the yield come from when you stake WBTC on Aave?</summary><div class="c66b079">It comes from interest paid by borrowers who post collateral to borrow against the WBTC you've supplied, as described in <a href="https://docs.aave.com/" rel="nofollow noopener" target="_blank">Aave's documentation</a>. The rate floats with how much WBTC is borrowed relative to what's supplied.</div></details>
-<details class="cd4166c"><summary class="cd2687a">Is staking WBTC the same as wrapping Bitcoin?</summary><div class="c66b079">No. Wrapping is the one-time process of locking BTC with a custodian to mint WBTC. Staking WBTC happens after that, when you deposit the already-minted token into a yield-generating protocol.</div></details>
-<details class="cd4166c"><summary class="cd2687a">What's the biggest risk when you stake WBTC in a liquidity pool?</summary><div class="c66b079">Impermanent loss — if WBTC and its paired asset drift apart in price, the value you withdraw can be less than if you'd simply held both assets separately, even after counting the fees earned.</div></details>
-<details class="cd4166c"><summary class="cd2687a">Do you lose custody of your WBTC when you stake it?</summary><div class="c66b079">No. Depositing into a lending market or pool is a smart-contract interaction from your own wallet, not a transfer to a custodian. You can withdraw whenever the protocol has sufficient liquidity.</div></details>
-<details class="cd4166c"><summary class="cd2687a">How often does WBTC staking yield compound?</summary><div class="c66b079">It depends on the route. Lending markets like Aave typically compound continuously as the supplied balance grows block by block; liquidity-pool fees usually need to be claimed or reinvested manually.</div></details>
-<details class="cd4166c"><summary class="cd2687a">Does the APY shown for staking WBTC include Bitcoin's price movement?</summary><div class="c66b079">No. The APY measures how much more WBTC you accumulate, not its dollar value. Bitcoin's price moves independently, so your USD return combines the yield with whatever BTC does over the same period.</div></details>
-    </main>
-    <section id="sources" class="ca7f647" aria-labelledby="sources-heading">
-      <h2 id="sources-heading" class="c126866">Sources</h2>
-      <ul class="c93dbdc"><li><a class="c5e0c0f" href="https://wbtc.network/" rel="nofollow noopener" target="_blank">WBTC Network</a></li>
-<li><a class="c5e0c0f" href="https://docs.aave.com/" rel="nofollow noopener" target="_blank">Aave Documentation</a></li>
-<li><a class="c5e0c0f" href="https://en.wikipedia.org/wiki/Wrapped_Bitcoin" rel="nofollow noopener" target="_blank">Wrapped Bitcoin — Wikipedia</a></li>
-<li><a class="c5e0c0f" href="https://defillama.com/" rel="nofollow noopener" target="_blank">DefiLlama</a></li></ul>
-    </section>
-    <footer class="c461871">
-      <span class="c14ed24">Staking guide</span>
-      <div>Updated Nov 05, 2026</div>
-    </footer>
-  </div>
-  <script>
-    (() => {
-      const amount = document.getElementById('amount');
-      const apy = document.getElementById('apy');
-      const period = document.getElementById('period');
-      const help = document.getElementById('amount-help');
-      const received = document.getElementById('received');
-      const total = document.getElementById('total');
-      const apyout = document.getElementById('apyout');
-      const format = new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-      let pending;
-      function num(el, min, max) {
-        const raw = el.value.trim();
-        const ok = /^(?:\d+(?:[.,]\d{1,4})?|[.,]\d{1,4})$/.test(raw);
-        const v = ok ? Number(raw.replace(',', '.')) : NaN;
-        return (Number.isFinite(v) && v >= min && v <= max) ? v : NaN;
-      }
-      function calculate() {
-        const value = num(amount, 1, 1000000);
-        const rate = num(apy, 0, 1000);
-        amount.setAttribute('aria-invalid', String(Number.isNaN(value)));
-        apy.setAttribute('aria-invalid', String(Number.isNaN(rate)));
-        if (Number.isNaN(value) || Number.isNaN(rate)) {
-          received.textContent = '—';
-          total.textContent = '—';
-          apyout.textContent = '—';
-          help.textContent = 'Enter an amount (1–1,000,000) and an APY (0–1,000%).';
-          return;
-        }
-        const years = Number(period.value) || 1;
-        const months = Math.max(1, Math.round(years * 12));
-        const monthly = rate / 100 / 12;
-        const endBalance = value * Math.pow(1 + monthly, months);
-        received.textContent = format.format(endBalance - value);
-        total.textContent = format.format(endBalance);
-        apyout.textContent = format.format(rate) + '%';
-        help.textContent = 'Enter an amount from 1 to 1,000,000 units.';
-      }
-      amount.addEventListener('input', () => { clearTimeout(pending); pending = setTimeout(calculate, 180); });
-      apy.addEventListener('input', () => { clearTimeout(pending); pending = setTimeout(calculate, 180); });
-      amount.addEventListener('blur', () => { clearTimeout(pending); calculate(); });
-      apy.addEventListener('blur', () => { clearTimeout(pending); calculate(); });
-      period.addEventListener('change', calculate);
-      calculate();
-    })();
-  </script>
-</body>
-</html>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="i-cv" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 6 5 5 5-5"/></symbol>
+<symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 6v5c0 4.4 3 8.4 7 10 4-1.6 7-5.6 7-10V6z"/><path d="m9 12 2 2 4-4"/></symbol>
+<symbol id="i-coins" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="9" cy="7" rx="5" ry="2.5"/><path d="M4 7v4c0 1.4 2.2 2.5 5 2.5s5-1.1 5-2.5V7"/><path d="M10 15.5c.6 1.2 2.6 2 5 2 2.8 0 5-1.1 5-2.5v-4c0-1.4-2.2-2.5-5-2.5"/><path d="M20 15v4c0 1.4-2.2 2.5-5 2.5s-5-1.1-5-2.5v-2"/></symbol>
+<symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/><path d="M12 14.5v2"/></symbol>
+<symbol id="i-layers" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5"/></symbol>
+<symbol id="i-drop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5s-6 6.4-6 10.5a6 6 0 0 0 12 0c0-4.1-6-10.5-6-10.5z"/></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+<symbol id="i-server" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="7" rx="2"/><rect x="4" y="13" width="16" height="7" rx="2"/><path d="M8 7.5h.01M8 16.5h.01"/></symbol>
+<symbol id="i-gear" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 13a7.8 7.8 0 0 0 0-2l2-1.5-2-3.4-2.3 1a7.6 7.6 0 0 0-1.7-1L15 2.5h-4l-.4 2.6c-.6.3-1.2.6-1.7 1l-2.3-1-2 3.4L4.6 11a7.8 7.8 0 0 0 0 2l-2 1.5 2 3.4 2.3-1c.5.4 1.1.7 1.7 1l.4 2.6h4l.4-2.6c.6-.3 1.2-.6 1.7-1l2.3 1 2-3.4z"/></symbol>
+</defs></svg>
 
+<header class="nav">
+  <a class="brand" href="index.html" aria-label="Stake WBTC home"><img src="icon.svg" alt=""><span>Stake WBTC</span></a>
+  <nav class="nlinks" aria-label="Primary">
+    <a href="#overview">What is it</a>
+    <a href="#compare">Lend vs restake</a>
+    <a href="#how">How to stake</a>
+    <a href="#fees">Fees &amp; gas</a>
+    <a href="#security">Security</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+  <span class="spacer"></span>
+  <a class="chain" href="/dashboard/" style="text-decoration:none"><img src="assets/net-ethereum.svg" alt=""><span>Ethereum</span><svg class="cv" aria-hidden="true"><use href="#i-cv"/></svg></a>
+  <a class="connect" href="/dashboard/" style="text-decoration:none">Connect wallet</a>
+</header>
+
+<main>
+  <section class="hero">
+    <h1>Stake WBTC</h1>
+
+    <section class="card" aria-label="Stake WBTC">
+      <div class="tabs">
+        <button class="tab on" type="button">Deposit</button>
+        <button class="tab" type="button">Withdraw</button>
+        <span class="sp"></span>
+        <button class="ic gear" type="button" aria-label="Settings" data-toast="Staking settings are disabled in this demo."><svg aria-hidden="true"><use href="#i-gear"/></svg></button>
+      </div>
+
+      <div class="promo promo-flow">
+        <div class="promo-txt">
+          <h2 class="promo-h">Put your WBTC to work on Ethereum</h2>
+          <p class="promo-sub">WBTC has no native staking. Deposit it into a protocol and sign from your own wallet.</p>
+        </div>
+        <ol class="flow">
+          <li><span class="fi"><img src="assets/wbtc.svg" alt=""></span><b>WBTC</b><small>ERC-20 with 8 decimals</small></li>
+          <li><span class="fi on"><svg aria-hidden="true"><use href="#i-layers"/></svg></span><b>Protocol</b><small>Lending, pool or vault</small></li>
+          <li><span class="fi"><svg aria-hidden="true"><use href="#i-coins"/></svg></span><b>Yield</b><small>Paid by the protocol</small></li>
+        </ol>
+      </div>
+
+      <div class="cta-wrap"><a class="cta" href="/dashboard/" style="display:flex;align-items:center;justify-content:center;text-decoration:none">Deposit WBTC</a></div>
+    </section>
+  </section>
+
+  <section class="learn" id="learn">
+    <p class="learn-h">Learn about staking WBTC</p>
+    <div class="lrow">
+      <details class="lcard" name="learn" id="overview"><summary><span>What is it</span><span class="chev" aria-hidden="true"></span></summary><div class="lbody"><h2>What it means to stake WBTC</h2>
+<p>WBTC is an ERC-20 token that represents Bitcoin on Ethereum. Bitcoin has no staking, and neither does the wrapper, so <strong>staking WBTC</strong> is a loose term. In practice it means depositing WBTC into a protocol that pays you for providing it.</p>
+<h3>Where the reward comes from</h3>
+<ul>
+<li><strong>Lending markets:</strong> you supply WBTC and borrowers pay interest to use it.</li>
+<li><strong>Liquidity pools:</strong> you add WBTC beside another asset and earn a share of trading fees, with impermanent loss as a risk.</li>
+<li><strong>Restaking and vault protocols:</strong> some accept WBTC and pay extra rewards for it, in exchange for extra risk.</li>
+</ul>
+<h3>What does not change</h3>
+<p>Your WBTC is still a token backed by BTC held by a custodian, and it is still exposed to the price of Bitcoin. Depositing it adds smart contract risk on top. The reward is payment for taking that risk, not a guaranteed return.</p></div></details>
+
+      <details class="lcard" name="learn" id="compare"><summary><span>Lend vs restake</span><span class="chev" aria-hidden="true"></span></summary><div class="lbody"><h2>Lending WBTC vs restaking vault</h2>
+<p>Both put WBTC to work, but they pay for different things and fail in different ways. Check which one you are depositing into before you sign.</p>
+<div class="tbl"><table><caption>Lending WBTC vs depositing into a restaking vault</caption><thead><tr><th scope="col"></th><th scope="col">Lending WBTC</th><th scope="col">Restaking vault</th></tr></thead><tbody><tr><th scope="row">Where yield comes from</th><td>Interest paid by borrowers</td><td>Protocol rewards and incentives, often tied to securing other services</td></tr><tr><th scope="row">Main risks</th><td>Smart contract bugs, borrower defaults handled by liquidations, WBTC custodian risk</td><td>All lending risks plus extra contract layers, possible penalties and reward programs that can end</td></tr><tr><th scope="row">Rate behavior</th><td>Moves with borrowing demand</td><td>Varies with the incentive schedule and the vault strategy</td></tr><tr><th scope="row">Withdrawal</th><td>Usually on demand if the market has free liquidity</td><td>May involve a queue or waiting period set by the protocol</td></tr></tbody></table></div>
+<h3>In practice</h3>
+<p>Lending is the simpler of the two and has fewer moving parts. A restaking vault can pay more because you accept more risk and often less flexibility. Read the withdrawal terms first.</p></div></details>
+
+      <details class="lcard" name="learn" id="how"><summary><span>How to stake</span><span class="chev" aria-hidden="true"></span></summary><div class="lbody"><h2>How to stake WBTC</h2>
+<h3>Pick the destination</h3>
+<p>Decide whether you want lending, a pool or a vault. The interface shows the terms and the contract you are about to use, and nothing moves until you sign.</p>
+<h3>Step by step</h3>
+<ol>
+<li>Connect your wallet and make sure it holds WBTC and a little ETH for gas.</li>
+<li>Choose how to stake and enter an amount. WBTC uses 8 decimals, so amounts can go down to eight places.</li>
+<li>Approve WBTC once for the protocol contract, since it is an ERC-20 token.</li>
+<li>Sign the deposit and wait for confirmation on Ethereum.</li>
+<li>To exit, sign a withdrawal. Some protocols pay out at once, others queue it.</li>
+</ol>
+<p>If you only want to hold Bitcoin exposure and not earn on it, you do not need any of this.</p></div></details>
+
+      <details class="lcard" name="learn" id="fees"><summary><span>Fees &amp; gas</span><span class="chev" aria-hidden="true"></span></summary><div class="lbody"><h2>What staking WBTC costs</h2>
+<h3>Gas</h3>
+<p>Each on-chain step is a separate Ethereum transaction paid in native ETH: the approval, the deposit and later the withdrawal. See how <a href="https://ethereum.org/en/developers/docs/gas/" target="_blank" rel="nofollow noopener">gas works</a>. WBTC does not pay for its own gas, so keep ETH in the wallet.</p>
+<h3>Protocol charges</h3>
+<p>Depending on the destination, there may be a performance fee, a withdrawal fee or a share of rewards taken by a vault. Pools also cost you through impermanent loss when prices move apart. These show on the confirmation screen or in the protocol terms.</p>
+<h3>Small deposits</h3>
+<p>Because gas does not scale with the amount, a small deposit can lose a large part of its reward to fees. Compare the gas estimate to what you expect to earn.</p></div></details>
+
+      <details class="lcard" name="learn" id="security"><summary><span>Security</span><span class="chev" aria-hidden="true"></span></summary><div class="lbody"><h2>Staying safe</h2>
+<h3>Non-custodial by design</h3>
+<p>You connect your own wallet and sign every transaction yourself. This interface only prepares the transaction. It never holds your WBTC or your keys.</p>
+<h3>Before you sign</h3>
+<ul>
+<li>Verify the WBTC contract address, since fake wrapped Bitcoin tokens exist.</li>
+<li>Approve only the amount you plan to deposit, and revoke old <a href="https://ethereum.org/en/developers/docs/standards/tokens/erc-20/" target="_blank" rel="nofollow noopener">ERC-20</a> allowances you no longer use.</li>
+<li>Understand the withdrawal terms and any lock-up before depositing.</li>
+<li>Remember that WBTC depends on its custodian and each protocol adds its own contract risk, so the risk is never zero.</li>
+</ul></div></details>
+
+      <details class="lcard" name="learn" id="faq"><summary><span>FAQ</span><span class="chev" aria-hidden="true"></span></summary><div class="lbody lfaq"><h2>Stake WBTC FAQ</h2>
+<h3>Can you really stake WBTC?</h3>
+<p>Not in the strict sense, because WBTC is an ERC-20 wrapper of BTC and has no native staking. When people say they stake WBTC, they mean depositing it into a lending market, a liquidity pool or a vault that pays for it. The reward and the risk depend on which one you use.</p>
+<h3>Where does the yield on staked WBTC come from?</h3>
+<p>It depends on the destination. Lending pays interest from borrowers, pools pay a share of trading fees, and vaults or restaking protocols pay rewards set by the protocol. None of these is guaranteed and each carries its own risk.</p>
+<h3>Why do I need to approve WBTC first?</h3>
+<p>WBTC is an ERC-20 token, so a protocol contract needs an allowance before it can move your tokens. The approval is its own transaction and costs gas. You can limit it to the amount you plan to deposit.</p>
+<h3>Do I need ETH to stake WBTC?</h3>
+<p>Yes. Gas on Ethereum is paid in native ETH, not in WBTC. Keep enough ETH for the approval, the deposit and the later withdrawal.</p>
+<h3>What are the risks of staking WBTC?</h3>
+<p>The main ones are smart contract bugs, impermanent loss in pools, liquidation and market events in lending, and extra layers of risk in restaking vaults. WBTC also relies on its custodian, and its price follows Bitcoin. Only deposit what you can afford to have locked or lose.</p>
+<h3>How many decimals does WBTC have?</h3>
+<p>WBTC uses 8 decimals, the same as Bitcoin, unlike most ERC-20 tokens which use 18. The smallest amount you can enter is 0.00000001 WBTC. Mind the decimals if you copy raw amounts between tools.</p></div></details>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="foot"><span>&copy; 2026 Stake WBTC</span><span class="sep">&middot;</span><a href="legal.html#privacy">Privacy</a><span class="sep">&middot;</span><a href="legal.html#terms">Terms</a><span class="sep">&middot;</span><span>Non-custodial &middot; WBTC on Ethereum</span></div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+"use strict";
+var tabs=[].slice.call(document.querySelectorAll('.tab'));
+tabs.forEach(function(t){t.addEventListener('click',function(){tabs.forEach(function(x){x.classList.toggle('on',x===t);});});});
+
+var toast=document.getElementById('toast'),tT;
+function notify(m){toast.textContent=m;toast.classList.add('show');clearTimeout(tT);tT=setTimeout(function(){toast.classList.remove('show');},3000);}
+[].slice.call(document.querySelectorAll('[data-toast]')).forEach(function(b){b.addEventListener('click',function(){notify(b.getAttribute('data-toast'));});});
+
+function openHash(){var id=location.hash.slice(1);if(!id)return;var c=document.getElementById(id);if(c&&c.matches&&c.matches('.lcard[name="learn"]'))c.open=true;}
+window.addEventListener('hashchange',openHash);openHash();
+[].slice.call(document.querySelectorAll('.nlinks a')).forEach(function(a){a.addEventListener('click',function(){var c=document.getElementById(a.getAttribute('href').slice(1));if(c&&c.matches('.lcard'))c.open=true;});});
+})();
+</script>
+</body></html>

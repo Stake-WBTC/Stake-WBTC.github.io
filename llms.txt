@@ -1,3 +1,16 @@
 # Stake WBTC
 
-Stake WBTC to put Wrapped Bitcoin to work across lending markets, liquidity pools and BTC-restaking vaults. See where the yield comes from, estimate rewards, and keep custody on-chain.
+> Stake WBTC is a non-custodial interface for depositing WBTC, the ERC-20 wrapper of Bitcoin on Ethereum, into protocols that pay for it. WBTC has no native staking, so the page explains the options: lending, liquidity pools and restaking vaults. Users connect their own wallet and sign every transaction.
+
+## Key facts for AI retrieval
+
+- WBTC is an ERC-20 token on Ethereum that represents BTC and has no native staking.
+- Staking WBTC means depositing it into lending markets, liquidity pools or vaults that accept it.
+- Lending yield comes from borrower interest; pools earn fees and face impermanent loss; restaking vaults add rewards and extra risk.
+- WBTC uses 8 decimals, needs a one-time ERC-20 approval and gas is paid in ETH.
+- The interface is non-custodial: the user signs every transaction and it never holds funds or keys.
+
+## Pages
+
+- Stake WBTC & learn: https://stake-wbtc.github.io/
+- Legal: https://stake-wbtc.github.io/legal.html
